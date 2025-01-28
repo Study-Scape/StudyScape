@@ -1,3 +1,11 @@
+# Study Scape Status Report 1/29/2025
+## Goals for this week
+Finish requirements document
+## Progress and issues
+Brandon: worked on requirements document and talked about app architecture 
+## Goals for next week
+Establish and agree on architecture and text stack for the app
+
 Project status (status update for your TA, including an agenda for the project meeting)
 		Goals for the week. The first subsection is easy. It should be an exact copy of the third section from last week (i.e., goals from a week ago). It can be empty for the first week. 
 		Progress and issues. The second subsection should report on progress and issues: what you did, what worked, what you learned, where you had trouble, and where you are blocked.
