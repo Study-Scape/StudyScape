@@ -14,8 +14,8 @@
   - Work on and finish architecture assignment. Should take less than a week (since it's due).  
   - Begin research on Google Maps API (the time estimate is unknown, just however long it takes).
  - Sanjana:
-  -  complete architecture and design assignment by next week
-  -  research more about software to implement design
+    - complete architecture and design assignment by next week
+    - research more about software to implement design
 
 Project status (status update for your TA, including an agenda for the project meeting)
 - Goals for the week. The first subsection is easy. It should be an exact copy of the third section from last week (i.e., goals from a week ago). It can be empty for the first week. 
