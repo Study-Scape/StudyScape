@@ -1,10 +1,13 @@
 # Study Scape Status Report 1/29/2025
 ## Goals for this week
 Finish requirements document
+Michael: There was no last week
 ## Progress and issues
 Brandon: worked on requirements document and talked about app architecture 
+Michael: worked on requirements document
 ## Goals for next week
 Establish and agree on architecture and text stack for the app
+Michael: work on and finish architecture assignment. Should take less than a week (since it's due). Begin research on Google Maps API (the time estimate is unknown, just however long it takes). 
 
 Project status (status update for your TA, including an agenda for the project meeting)
 - Goals for the week. The first subsection is easy. It should be an exact copy of the third section from last week (i.e., goals from a week ago). It can be empty for the first week. 
