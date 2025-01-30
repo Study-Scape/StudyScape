@@ -29,6 +29,7 @@ All members will explore and research their roles/subteams (1 week)
 - Sanjana: worked on requirements document and planned what software toolset to use for frontend development
 - Carl: worked on requirements document and researched about backend development and tools
 - Julie: worked on requirements document
+- Dawn: worked on requirements document (was out sick for the past week so unable to research)
 
 ### Goals for next week
 - Brandon: 
@@ -45,6 +46,9 @@ All members will explore and research their roles/subteams (1 week)
 - Julie:
   - complete 03 assignment for next week's due date (~4 days)
   - talk about what should the frontend have (~4 days)
+- Dawn:
+  - work with Carl to determine potential tools and tech stack (~3 days)
+  - practice using said tools (~3 days)  
 
 > ## Format
 > Each status report must be a markdown file and must include the following two sections:
