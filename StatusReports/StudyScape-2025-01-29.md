@@ -7,15 +7,19 @@
 - Brandon: worked on requirements document and talked about app architecture  
 - Michael: worked on requirements document
 - Sanjana: worked on requirements document and planned what software toolset to use for frontend development
+- Carl: worked on requirements document and researched about backend development and tools
 
 ## Goals for next week
 - Establish and agree on architecture and text stack for the app  
 - Michael:  
   - Work on and finish architecture assignment. Should take less than a week (since it's due).  
   - Begin research on Google Maps API (the time estimate is unknown, just however long it takes).
- - Sanjana:
-    - complete architecture and design assignment by next week
-    - research more about software to implement design
+- Sanjana:
+  - complete architecture and design assignment by next week
+  - research more about software to implement design
+- Carl:
+  - Familiarize with the top potential tools and techstack (~3 days)
+  - Practice using said tools (~2 days)
 
 Project status (status update for your TA, including an agenda for the project meeting)
 - Goals for the week. The first subsection is easy. It should be an exact copy of the third section from last week (i.e., goals from a week ago). It can be empty for the first week. 
