@@ -8,6 +8,7 @@
 - Michael: worked on requirements document
 - Sanjana: worked on requirements document and planned what software toolset to use for frontend development
 - Carl: worked on requirements document and researched about backend development and tools
+- Julie: worked on requirements document
 
 ## Goals for next week
 - Establish and agree on architecture and text stack for the app  
@@ -20,6 +21,9 @@
 - Carl:
   - Familiarize with the top potential tools and techstack (~3 days)
   - Practice using said tools (~2 days)
+- Julie:
+  - complete 03 assignment for next week's due date (~4 days)
+  - talk about what should the frontend have (~4 days)
 
 Project status (status update for your TA, including an agenda for the project meeting)
 - Goals for the week. The first subsection is easy. It should be an exact copy of the third section from last week (i.e., goals from a week ago). It can be empty for the first week. 
