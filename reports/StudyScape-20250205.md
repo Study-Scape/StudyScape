@@ -11,9 +11,10 @@ We hope to finalize our chosen software and tools for the project.
 All members will explore and research their roles/subteams.
 
 ### Progress and issues
+We finished the architecture and design assignment successfully and have a good picture on what our techstack will be (React, MapBox, Supabase).
 
 ### Goals for next week
-
+Have MapBox, React, and Supabase set up individually and hopefully ready to integrate.
 
 ## Individual Status
 
@@ -37,6 +38,7 @@ All members will explore and research their roles/subteams.
   - practice using said tools (~3 days)
 
 ### Progress and issues
-
+- Dawn: Worked on architecture and design document. Starting to read up on Supabase and PostgreSQL documentation (have never used these before). Supabase does have React support but not MapBox support so we'll need to figure out exactly how we expect MapBox and Supabase to communicate if at all.
 
 ### Goals for next week
+- Dawn: Have Supabase fully set up and functional to receive and store data, or at least have the former done and start to do testing for the latter (~4 days)
