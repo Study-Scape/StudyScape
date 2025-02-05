@@ -39,6 +39,8 @@ Have MapBox, React, and Supabase set up individually and hopefully ready to inte
 
 ### Progress and issues
 - Dawn: Worked on architecture and design document. Starting to read up on Supabase and PostgreSQL documentation (have never used these before). Supabase does have React support but not MapBox support so we'll need to figure out exactly how we expect MapBox and Supabase to communicate if at all.
+- Sanjana: Worked on architecture and design document. Researched and outlined what front-end components and features we should use and how to implement them. 
 
 ### Goals for next week
 - Dawn: Have Supabase fully set up and functional to receive and store data, or at least have the former done and start to do testing for the latter (~4 days)
+- Sanjana: Design and implement basic UI layout and work on testing and continuous integration document.
