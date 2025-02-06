@@ -43,7 +43,7 @@ Have MapBox, React, and Supabase set up individually and hopefully ready to inte
 - Michael: Worked on architecture and design document. Explored other possible Map API's, and decided to choose MapBox ove GoogleMaps. Started exploring MapBox's features.
 - Carl: Worked on architecture and design document. Began research on Supabase documentation of PostgreSQL and Auth. Newly learning Supabase and backend dev.
 - Brandon: Worked on architecture and design document. Discusses possible Map APIs and decided to use MapBox. Started learning how to use MapBox and integrate features into app.
--Julie: Worked on architecture and design document. Looked into what the front-end should have and how to implement them.
+- Julie: Worked on architecture and design document. Looked into what the front-end should have and how to implement them.
 ### Goals for next week
 - Dawn: Have Supabase fully set up and functional to receive and store data, or at least have the former done and start to do testing for the latter (~4 days)
 - Sanjana: Design and implement basic UI layout and work on testing and continuous integration document (~1 week)
