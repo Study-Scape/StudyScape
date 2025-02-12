@@ -4,15 +4,15 @@
 
 ### Meeting Agenda
 1. Discuss base unit tests
-2. Initializing project to repo with React app, Supabase app and mapbox
+2. Initializing project to repository with React app, Supabase app and mapbox
 
-### Goals for the week
+### Goals for the week (Team)
 Have MapBox, React, and Supabase set up individually and hopefully ready to integrate.
 
-### Progress and issues
+### Progress and issues (Team)
 We finished the Testing and continuous integration milestone assignment successfully and have good understanding of GitHub actions for CI and subteams are familar with their  test-automation infrastructures.
 
-### Goals for next week
+### Goals for next week (Team)
 Have skeleton of the project in the GitHub, ensure basic build and environments set up and functional.
 
 ## Individual Status
