@@ -31,7 +31,7 @@ Have skeleton of the project in the GitHub, ensure basic build and environments 
 - Michael: Worked on testing and CI document. Did further experimentation with MapBox, and finalized a plan for just exactly how the map would look.
 - Carl: Worked on testing and CI document. Continuing learning of Supabase and backend dev. Created and began personal React-Supabase project for hands-on learning. Progressing with pgTAP unit tests and how to write database tests for Supabase.
 - Brandon: Worked on testing and CI document. Discussed and planned how to implement map into app. 
-- Julie:
+- Julie: Worked on testing and CI document. Learn how to use Jest and GitHub Actions.
 
 ### Goals for next week
 - Dawn:
@@ -39,4 +39,4 @@ Have skeleton of the project in the GitHub, ensure basic build and environments 
 - Michael: work towards beta release, get a basic map created with the first test waypoints.
 - Carl: Have tables with appropriate columns created for the database base on a schema. Work with test project with testing, auth, and data store, implement basic Supabase functionality to StudyScape (~1 week)
 - Brandon: Have a working map for the beat with limited markers for study spots.
-- Julie:
+- Julie: Make a beta UI Layout with Sanjana and link it with backend.
