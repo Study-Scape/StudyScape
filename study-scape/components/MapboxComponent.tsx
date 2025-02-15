@@ -11,11 +11,13 @@ const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoibXBlbmc2NiIsImEiOiJjbTZyMDhnMjQxbGFxMmlx
 interface MapboxComponentProps {
   center?: [number, number];
   zoom?: number;
+  maxBounds?: [[number, number], [number, number]]
 }
 
 const MapboxComponent: React.FC<MapboxComponentProps> = ({
   center = [-122.306976, 47.655531],
   zoom = 14.5,
+  maxBounds = [[-122.319227, 47.647343],[-122.290292, 47.664654]]
 }) => {
   const mapRef = useRef<mapboxgl.Map | null>(null);
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
@@ -30,6 +32,7 @@ const MapboxComponent: React.FC<MapboxComponentProps> = ({
         container: mapContainerRef.current,
         center,
         zoom,
+        maxBounds
       });
     }
 
