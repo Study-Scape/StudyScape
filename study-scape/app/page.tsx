@@ -43,25 +43,40 @@ export default async function Home() {
           <div>
             {locations?.map((location, index) => (
               <div key={index} className="mb-4 p-4 border rounded-lg">
-                <h3>{location.name}</h3>
+                {location.name}
                 <p>{location.address}</p>
                   <div>
                     {location.hasWifi && (<span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
-                      WiFi
+                      {location.hasWifi}
+                    </span>
+                    )}
+                    {location.hasFood && ( 
+                      <span className="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">
+                      {location.hasFood}
+                    </span>
+                    )}
+                    {location.hasRestrooms && ( 
+                      <span className="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">
+                      {location.hasRestrooms}
+                    </span>
+                    )}
+                    {location.hasPrinters && ( 
+                      <span className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">
+                      {location.hasPrinters}
                     </span>
                     )}
                     {location.hasOutlets && (
                       <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">
-                        Power Outlets
+                        {location.hasOutlets}
                       </span>
-                    )}
-                    {location.hasRestroom && ( 
-                      <span className="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">
-                      Restrooms
-                    </span>
                     )}
                   </div>
                   {location.avgRating}
+                  {location.soundLevel && (
+                    <span className="px-2 py-1 text-green-800">
+                    {location.soundLevel}
+                  </span>
+                  )}
               </div>
             ))}
           </div>
