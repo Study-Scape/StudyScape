@@ -1,10 +1,11 @@
 "use client";
 
-import { useRef, useEffect } from 'react';
-import mapboxgl from 'mapbox-gl';
+import { useRef, useEffect, useState, use } from 'react';
+import mapboxgl, { Marker } from 'mapbox-gl';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './MapboxComponent.css';
+import MarkerComponent from './MarkerComponent';
 
 const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoibXBlbmc2NiIsImEiOiJjbTZyMDhnMjQxbGFxMmlxM2RvdzlidTBjIn0.84mKeAhq22pQoFgcrYWMBw';
 
@@ -17,32 +18,58 @@ interface MapboxComponentProps {
 const MapboxComponent: React.FC<MapboxComponentProps> = ({
   center = [-122.306976, 47.655531],
   zoom = 14.5,
-  maxBounds = [[-122.319227, 47.647343],[-122.290292, 47.664654]]
+  maxBounds = [[-122.317514, 47.648321],[-122.291337, 47.663049]]
 }) => {
   const mapRef = useRef<mapboxgl.Map | null>(null);
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
+  const [mapLoaded, setMapLoaded] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    if (typeof window === "undefined" || !mapContainerRef.current) return;
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted || !mapContainerRef.current) return;
 
     mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
 
-    if (!mapRef.current) {
-      mapRef.current = new mapboxgl.Map({
-        container: mapContainerRef.current,
-        center,
-        zoom,
-        maxBounds
-      });
-    }
+    const map = new mapboxgl.Map({
+      container: mapContainerRef.current,
+      center,
+      zoom,
+      maxBounds
+    });
+
+    mapRef.current = map
+
+    mapRef.current?.dragRotate.disable()
+    mapRef.current?.touchZoomRotate.disable()
+
+    map.on('load', () => {
+      setMapLoaded(true);
+    });
 
     return () => {
-      mapRef.current?.remove();
+      map.remove();
       mapRef.current = null;
     };
-  }, [center, zoom]);
+  }, [isMounted]);
 
-  return <div id="map-container" ref={mapContainerRef} style={{ width: '100%', height: '100vh' }} />;
+  if (!isMounted) return null;
+
+  return (
+    <div id="map-container" ref={mapContainerRef} style={{ width: '100%', height: '100vh' }}>
+      {mapLoaded && mapRef.current && (
+        <>
+          <MarkerComponent map={mapRef.current} coordinates={[-122.304641, 47.654584]}/>
+          <MarkerComponent map={mapRef.current} coordinates={[-122.307842, 47.655885]}/>
+          <MarkerComponent map={mapRef.current} coordinates={[-122.305072, 47.653372]}/>
+          <MarkerComponent map={mapRef.current} coordinates={[-122.310363, 47.656646]}/>
+        </>
+      )}
+    </div>
+  );
 };
 
 export default MapboxComponent;
