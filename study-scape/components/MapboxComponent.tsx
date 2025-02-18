@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState, use } from 'react';
-import mapboxgl from 'mapbox-gl';
+import mapboxgl, { Marker } from 'mapbox-gl';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './MapboxComponent.css';
@@ -62,7 +62,10 @@ const MapboxComponent: React.FC<MapboxComponentProps> = ({
     <div id="map-container" ref={mapContainerRef} style={{ width: '100%', height: '100vh' }}>
       {mapLoaded && mapRef.current && (
         <>
-          <MarkerComponent map={mapRef.current} coordinates={[-122.306976, 47.655531]} popupText='center'/>
+          <MarkerComponent map={mapRef.current} coordinates={[-122.304641, 47.654584]}/>
+          <MarkerComponent map={mapRef.current} coordinates={[-122.307842, 47.655885]}/>
+          <MarkerComponent map={mapRef.current} coordinates={[-122.305072, 47.653372]}/>
+          <MarkerComponent map={mapRef.current} coordinates={[-122.310363, 47.656646]}/>
         </>
       )}
     </div>

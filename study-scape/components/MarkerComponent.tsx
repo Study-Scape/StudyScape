@@ -17,7 +17,7 @@ const MarkerComponent: React.FC<MarkerProps> = ({
     useEffect(() => {
         if (!map || !coordinates) return;
 
-        const marker = new mapboxgl.Marker()
+        const marker = new mapboxgl.Marker({color: 'DarkOrchid'})
             .setLngLat(coordinates)
             .addTo(map);
 
