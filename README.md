@@ -10,13 +10,10 @@ accessibility limitations. Reviews and ratings from students, along with photogr
 provided to offer a clear and relatable perspective of each space from reliable sources.
 Overall, this project seeks to empower university students to make informed decisions
 about where to study based on their preferences and needs.
-- Your GitHub repository must provide a top-level README with:
 
-Clearly labeled instructions for how to build and test the system. Strive for a high degree of automation.
+Labeled instructions for how to build and test the system:
 
-Clearly labeled instructions for how to run the system.
+Labeled instructions for how to run the system:
 
-A GitHub tag (id) for this release. This is an identifier to use to on a “git checkout” to get the commits that comprise the beta release of your software. See: Git-Basics-Tagging.
-
-Based on the provided instructions, the course staff must be able to build and test the system without issues.
+A GitHub tag (id) for this release. This is an identifier to use to on a “git checkout” to get the commits that comprise the beta release of your software.
 
