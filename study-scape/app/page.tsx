@@ -51,7 +51,7 @@ export default async function Home() {
                     </span>
                     )}
                     {location.hasFood && ( 
-                      <span className="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">
+                      <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">
                       {location.hasFood}
                     </span>
                     )}
@@ -65,18 +65,29 @@ export default async function Home() {
                       {location.hasPrinters}
                     </span>
                     )}
-                    {location.hasOutlets && (
-                      <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">
-                        {location.hasOutlets}
-                      </span>
-                    )}
                   </div>
-                  {location.avgRating}
-                  {location.soundLevel && (
-                    <span className="px-2 py-1 text-green-800">
-                    {location.soundLevel}
-                  </span>
-                  )}
+                  <div className='text-red-600'>
+                  {location.avgRating} <small>Stars</small>
+                  </div>
+                  <br></br>
+                  <div>
+                    <span className="py-1 text-blue-800 text-sm">
+                      Accessibility:
+                    </span>
+                    <br></br>
+                    <div>
+                    {location.soundLevel && (
+                        <span className='px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full'>
+                          {location.soundLevel}
+                        </span>
+                    )}
+                    {location.hasElevator && (
+                        <span className='px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded-full'>
+                          {location.hasElevator}
+                        </span>
+                    )}
+                    </div>
+                  </div>
               </div>
             ))}
           </div>
