@@ -66,8 +66,9 @@ export default async function Home() {
                     </span>
                     )}
                   </div>
-                  <div className='text-red-600'>
-                  {location.avgRating} <small>Stars</small>
+                  <div>
+                  <span className='text-red-600 px-2 bg-red-50 rounded-full'>{location.avgRating}</span><small><span className='text-red-600 text-xs pr-4'>stars</span></small>
+                  <small><span className='text-green-600 text-xs'>noise level: </span></small><span className='text-green-600 rounded-full'>{location.soundLevel}</span>
                   </div>
                   <br></br>
                   <div>
@@ -76,14 +77,14 @@ export default async function Home() {
                     </span>
                     <br></br>
                     <div>
-                    {location.soundLevel && (
-                        <span className='px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full'>
-                          {location.soundLevel}
-                        </span>
-                    )}
                     {location.hasElevator && (
                         <span className='px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded-full'>
                           {location.hasElevator}
+                        </span>
+                    )}
+                    {location.quietSpaces && (
+                        <span className='px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full'>
+                          {location.quietSpaces}
                         </span>
                     )}
                     </div>
