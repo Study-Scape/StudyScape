@@ -1,5 +1,6 @@
 import MapboxComponent from '@/components/MapboxComponent'
 import { Button } from '@/components/ui/button'
+import FloatingSearch from "@/components/FloatingSearch";
 import { createClient } from '@/utils/supabase/server'
 import { cookies } from 'next/headers'
 import {
@@ -20,6 +21,7 @@ export default async function Home() {
   return (
     <main>
       <div style={{ position: "relative", height: "100vh", width: "100vw" }}>
+        <FloatingSearch/>
         <div 
           style={{
           position: "absolute",
@@ -39,7 +41,15 @@ export default async function Home() {
         <SheetContent side={'left'} className='max-h-screen overflow-y-auto scrollbar-hide'>
           <SheetHeader>
             <SheetTitle>Locations</SheetTitle>
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search locations..."
+                className="p-2 rounded-md text-black w-64"
+              />
+            </div>
           </SheetHeader>
+
           <div>
             {locations?.map((location, index) => (
               <div key={index} className="mb-4 p-4 border rounded-lg">
