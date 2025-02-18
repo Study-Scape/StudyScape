@@ -36,7 +36,7 @@ export default async function Home() {
             Show All Locations
           </Button>
         </SheetTrigger>
-        <SheetContent>
+        <SheetContent side={'left'} className='max-h-screen overflow-y-auto scrollbar-hide'>
           <SheetHeader>
             <SheetTitle>Locations</SheetTitle>
           </SheetHeader>
