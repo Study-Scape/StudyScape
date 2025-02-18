@@ -45,7 +45,7 @@ export default async function Home() {
               <div key={index} className="mb-4 p-4 border rounded-lg">
                 {location.name}
                 <p>{location.address}</p>
-                  <div>
+                  <div className='flex flex-wrap gap-1'>
                     {location.hasWifi && (<span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
                       {location.hasWifi}
                     </span>
@@ -76,7 +76,7 @@ export default async function Home() {
                       Accessibility:
                     </span>
                     <br></br>
-                    <div>
+                    <div className='flex flex-wrap gap-1'>
                     {location.hasElevator && (
                         <span className='px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded-full'>
                           {location.hasElevator}
@@ -85,6 +85,11 @@ export default async function Home() {
                     {location.quietSpaces && (
                         <span className='px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full'>
                           {location.quietSpaces}
+                        </span>
+                    )}
+                    {location.hasBikeRack && (
+                        <span className='px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full'>
+                          {location.hasBikeRack}
                         </span>
                     )}
                     </div>
