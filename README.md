@@ -17,3 +17,4 @@ Labeled instructions for how to run the system:
 
 A GitHub tag (id) for this release. This is an identifier to use to on a “git checkout” to get the commits that comprise the beta release of your software.
 
+Operational Use Cases:
