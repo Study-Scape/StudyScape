@@ -10,3 +10,14 @@ accessibility limitations. Reviews and ratings from students, along with photogr
 provided to offer a clear and relatable perspective of each space from reliable sources.
 Overall, this project seeks to empower university students to make informed decisions
 about where to study based on their preferences and needs.
+
+## Toolchain and processes
+To build and test the system, make sure to perform `git pull` to obtain the latest information before committing and pushing changes. All files required for testing, as well as the files themselves, are located on this repository. Code is built on the local IDEs of the developers and managed via Git and GitHub Actions.
+
+To run the system, type in `npm run dev` in the terminal, once the current working directory is set to the study-scape folder.
+
+## First version release!
+As of the latest commits, the exact use cases outlined in our project requirements from earlier are not operational. However, a more basic form of these use cases are operational as follows:
+   1. User wants to visually see the locations available and pan around the map for further options.
+   2. User wants to see the full list of study locations available (no filters applied)
+   3. User wants to access "favorited" spots via the "bookmarks" link at the top-right of the page.
