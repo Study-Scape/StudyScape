@@ -39,7 +39,7 @@ export default function FloatingSearch() {
       {/* Button to open the floating search window */}
       <Button className="hover:text-purple-500"
         onClick={toggleSearch}
-        style={{ position: "absolute", top: "100px", left: "50px", zIndex: 1000 }}
+        style={{ position: "absolute", top: "100px", left: "50px", zIndex: 1 }}
       >
         Search
       </Button>
@@ -60,7 +60,7 @@ export default function FloatingSearch() {
             borderRadius: "10px",
             boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
             cursor: "grab",
-            zIndex: 1001,
+            zIndex: 1,
           }}
         >
           <h3 className="text-lg font-bold">Search Study Spots</h3>

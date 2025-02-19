@@ -21,7 +21,7 @@ export default async function Home() {
   return (
     <main>
       <div style={{ position: "relative", height: "100vh", width: "100vw" }}>
-        <FloatingSearch/>
+      <FloatingSearch/>
         <div 
           style={{
           position: "absolute",
@@ -34,7 +34,7 @@ export default async function Home() {
 
       <Sheet>
         <SheetTrigger asChild>
-          <Button style={{ position: "absolute", top: "50px", left: "50px" }}>
+          <Button className="hover:text-purple-500" style={{ position: "absolute", top: "50px", left: "50px" }}>
             Show All Locations
           </Button>
         </SheetTrigger>
@@ -107,6 +107,7 @@ export default async function Home() {
               </div>
             ))}
           </div>
+
         </SheetContent>
       </Sheet>
       </div>
