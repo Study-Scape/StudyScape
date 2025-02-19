@@ -24,3 +24,7 @@ Labeled instructions for how to run the system:
 11. Open browser to http://localhost:3000 to see the website!
 
 Operational Use Cases:
+
+- Interactive Map
+- List of study locations
+- Marked study locations on map
