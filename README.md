@@ -15,6 +15,15 @@ Labeled instructions for how to build and test the system:
 
 Labeled instructions for how to run the system:
 
+1. Clone repository
+2. Open terminal
+3. cd to study-scape
+4. create .env.local with our supabase credentials
+5. "npm install"
+6. "npm run dev"
+11. Open browser to http://localhost:3000 to see the website!
+
+
 A GitHub tag (id) for this release. This is an identifier to use to on a “git checkout” to get the commits that comprise the beta release of your software.
 
 Operational Use Cases:
