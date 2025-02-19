@@ -18,13 +18,14 @@ To build and test the system, make sure to perform `git pull` to obtain the late
    2. Open terminal
    3. cd to study-scape
    4. run "npm install"
-   4. create ".env.local" file, fill with our supabase credentials
-   1. start docker
-   3. run "npm install supabase --save-dev"
-   4. run "npx supabase start"
-   5. run "supabase test db" to test tables and columns
+   5. create ".env.local" file, fill with our supabase credentials
+   6. start docker
+   7. run "npx supabase start"
+   8. run "supabase test db" to test tables and columns
+   9. run "supabase stop" to ensure stopping the container
 
 To run the system:
+
    1. cd to study-scape
    2. run "npm run dev"
    2. Open browser to http://localhost:3000 to see the website!
