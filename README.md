@@ -23,7 +23,4 @@ Labeled instructions for how to run the system:
 6. "npm run dev"
 11. Open browser to http://localhost:3000 to see the website!
 
-
-A GitHub tag (ID) for this release. This is an identifier to use to on a “git checkout” to get the commits that comprise the beta release of your software.
-
 Operational Use Cases:
