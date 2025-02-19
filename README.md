@@ -14,14 +14,20 @@ about where to study based on their preferences and needs.
 ## Toolchain and processes
 To build and test the system, make sure to perform `git pull` to obtain the latest information before committing and pushing changes. All files required for testing, as well as the files themselves, are located on this repository. Code is built on the local IDEs of the developers and managed via Git and GitHub Actions.
 
+   1. start docker
+   2. cd study-scape
+   3. npm install supabase --save-dev
+   4. npx supabase start
+   5. supabase test db to test tables and columns
+
 To run the system:
-1. Clone repository
-2. Open terminal
-3. cd to study-scape
-4. create .env.local with our supabase credentials
-5. "npm install"
-6. "npm run dev"
-7. Open browser to http://localhost:3000 to see the website!
+   1. Clone repository
+   2. Open terminal
+   3. cd to study-scape
+   4. create .env.local with our supabase credentials
+   5. "npm install"
+   6. "npm run dev"
+   7. Open browser to http://localhost:3000 to see the website!
 
 ## First version release!
 As of the latest commits, the exact use cases outlined in our project requirements from earlier are not operational. However, a more basic form of these use cases are operational as follows:
