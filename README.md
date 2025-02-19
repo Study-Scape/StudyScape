@@ -1,6 +1,6 @@
 # StudyScape
-CSE 403 Project
-This project aims to identify, evaluate, and share detailed information about
+CSE 403 Project Description: 
+- This project aims to identify, evaluate, and share detailed information about
 studying spots on and around the University of Washington campus, providing students
 with a comprehensive resource to optimize their study experience. Each study location is
 assessed based on key factors such as the hours of operation, walking distance from

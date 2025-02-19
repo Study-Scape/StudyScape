@@ -2,7 +2,6 @@ import { Geist } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 
-
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000";
@@ -46,9 +45,8 @@ export default function RootLayout({
                 Profile
               </Link>
             </div>
-
           </nav>
-        <main>{children}</main>
+        <main>{children} </main>
       </body>
     </html>
   );
