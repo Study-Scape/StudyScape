@@ -26,10 +26,12 @@ Start implementing some more advanced features, and finish fully connecting the 
 
 ### Progress and issues
 - Michael: along with Brandon got a working MapBox map, with the correct boundaries and some markers. Worked on the presentation.
+- Brandon: got a working MapBox map and markers. Presented beta in class.
 
 
 ### Goals for next week
 - Michael: Either work on the GPS aspect, or custom markers. Have the markers connect with the locations automatically, rather than having to manually make markers. 
+- Brandon: link marker components to backend and frontend for more interactivity and scalability.
 
 
 > ## Format
