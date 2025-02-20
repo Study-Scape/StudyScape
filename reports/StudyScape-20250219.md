@@ -1,8 +1,9 @@
-# Study Scape Status Report 2/18/2025
+# Study Scape Status Report 2/19/2025
 
 ## Project Status
 
 ### Meeting Agenda
+Continue work on website. CRUD implementation
 
 ### Goals for the week
 Have skeleton of the project in the GitHub, ensure basic build and environments set up and functional.
@@ -11,7 +12,7 @@ Have skeleton of the project in the GitHub, ensure basic build and environments 
 We finished up our BETA implementation of the website, and finished our presentation. Has a working map, some markers, and limited study locations. 
 
 ### Goals for next week
-Start implementing some more advanced features, and finish fully connecting the backend, frontend, and map. Add more locations. 
+Start implementing some more advanced features, and finish fully connecting the backend, frontend, and map. Add more locations. Search for existing datasets.
 
 ## Individual Status
 
@@ -27,11 +28,13 @@ Start implementing some more advanced features, and finish fully connecting the 
 ### Progress and issues
 - Michael: along with Brandon got a working MapBox map, with the correct boundaries and some markers. Worked on the presentation.
 - Brandon: got a working MapBox map and markers. Presented beta in class.
+- Carl: Implemented supabse SSR with cookies for 'show all locations' and 'bookmarks' lists with manual locations data from backend, updated schema to better reflect location's needs especially accessibility. Expanded database testing with pgTAP.
 
 
 ### Goals for next week
 - Michael: Either work on the GPS aspect, or custom markers. Have the markers connect with the locations automatically, rather than having to manually make markers. 
 - Brandon: link marker components to backend and frontend for more interactivity and scalability.
+- Carl: Implement data creation and inserting operations to backend from frontend. Refine data fetching and incorporate possible locations datasets to import for database. Improve current testing and automate new testing.
 
 
 > ## Format
