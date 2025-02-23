@@ -2,21 +2,17 @@ import MapboxComponent from '@/components/MapboxComponent'
 import { Button } from '@/components/ui/button'
 import FloatingSearch from "@/components/FloatingSearch";
 import { createClient } from '@/utils/supabase/server'
-import { cookies } from 'next/headers'
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
 
 export default async function Home() {
-  const cookieStore = await cookies()
-  const supabase = createClient(cookieStore)
-
-  const { data: locations } = await supabase.from('locations').select()
+  const supabase = await createClient();
+  const { data: locations } = await supabase.from('locations').select();
 
   return (
     <main>

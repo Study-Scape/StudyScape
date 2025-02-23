@@ -2,10 +2,8 @@ import { createClient } from '@/utils/supabase/server'
 import { cookies } from 'next/headers'
 
 export default async function Page() {
-  const cookieStore = await cookies()
-  const supabase = createClient(cookieStore)
-
-  const { data: bookmarks } = await supabase.from('locations').select().not('isBookmarked', 'is', null)
+  const supabase = await createClient();
+  const { data: bookmarks } = await supabase.from('locations').select().not('isBookmarked', 'is', null);
 
   return (
     <main className='flex justify-center min-h-screen w-full py-8'>
