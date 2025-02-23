@@ -65,22 +65,22 @@ export default function AllLocations({ serverLocations }: {serverLocations: any}
                 <p>{location.address}</p>
                   <div className='flex flex-wrap gap-1'>
                     {location.hasWifi && (<span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
-                      Wifi
+                      {location.hasWifi}
                     </span>
                     )}
                     {location.hasFood && ( 
                       <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">
-                      Food
+                      {location.hasFood}
                     </span>
                     )}
                     {location.hasRestrooms && ( 
                       <span className="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">
-                      Restrooms
+                      {location.hasRestrooms}
                     </span>
                     )}
                     {location.hasPrinters && ( 
                       <span className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">
-                      Printers
+                      {location.hasPrinters}
                     </span>
                     )}
                   </div>
@@ -99,17 +99,17 @@ export default function AllLocations({ serverLocations }: {serverLocations: any}
                     <div className='flex flex-wrap gap-1'>
                     {location.hasElevator && (
                         <span className='px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded-full'>
-                          Elevator
+                          {location.hasElevator}
                         </span>
                     )}
                     {location.quietSpaces && (
                         <span className='px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full'>
-                          Quiet Spaces
+                          {location.quietSpaces}
                         </span>
                     )}
                     {location.hasBikeRack && (
                         <span className='px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full'>
-                          Bike Rack
+                          {location.hasBikeRack}
                         </span>
                     )}
                     </div>
