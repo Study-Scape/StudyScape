@@ -14,20 +14,30 @@ import { useEffect, useState } from 'react';
 export default function AllLocations({ serverLocations }: {serverLocations: any}) {
     const supabase = createClient();
 
-    const [locations, setLocations] = useState(serverLocations)
+    const [locations, setLocations] = useState(serverLocations);
+    const [searchQuery, setSearchQuery] = useState('');
+
     useEffect(() => {
         const channel = supabase
         .channel('realtime locations')
-        .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'locations' }, (payload) => setLocations([...locations, payload.new]))
-        .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'locations' }, (payload) => setLocations((locations: any[]) => locations.map((loc) => (loc.name === payload.new.name ? payload.new : loc))))
-        .subscribe()
+        .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'locations' }, 
+            (payload) => setLocations([...locations, payload.new]))
+        .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'locations' }, 
+            (payload) => setLocations((locations: any[]) => locations.map((loc) => 
+                (loc.name === payload.new.name ? payload.new : loc))))
+        .subscribe();
 
         return () => {
             supabase.removeChannel(channel);
         }
     }, [supabase, locations, setLocations]);
 
-  return (
+    // Filter locations based on searchQuery
+    const filteredLocations = locations.filter((location: any) =>
+        location.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    return (
       <Sheet>
         <SheetTrigger asChild>
           <Button className="hover:text-purple-500" style={{ position: "absolute", top: "50px", left: "50px" }}>
@@ -42,14 +52,16 @@ export default function AllLocations({ serverLocations }: {serverLocations: any}
                 type="text"
                 placeholder="Search locations..."
                 className="p-2 rounded-md text-black w-64"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
           </SheetHeader>
 
           <div>
-            {locations?.map((location: any, index: number) => (
+            {filteredLocations?.map((location: any, index: number) => (
               <div key={index} className="mb-4 p-4 border rounded-lg">
-                {location.name}
+                <h2 className="font-semibold">{location.name}</h2>
                 <p>{location.address}</p>
                   <div className='flex flex-wrap gap-1'>
                     {location.hasWifi && (<span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
@@ -73,8 +85,10 @@ export default function AllLocations({ serverLocations }: {serverLocations: any}
                     )}
                   </div>
                   <div>
-                  <span className='text-red-600 px-2 bg-red-50 rounded-full'>{location.avgRating}</span><small><span className='text-red-600 text-xs pr-4'>stars</span></small>
-                  <small><span className='text-green-600 text-xs'>noise level: </span></small><span className='text-green-600 rounded-full'>{location.soundLevel}</span>
+                  <span className='text-red-600 px-2 bg-red-50 rounded-full'>{location.avgRating}</span>
+                  <small><span className='text-red-600 text-xs pr-4'> stars</span></small>
+                  <small><span className='text-green-600 text-xs'>Noise level: </span></small>
+                  <span className='text-green-600 rounded-full'>{location.soundLevel}</span>
                   </div>
                   <br></br>
                   <div>
@@ -106,5 +120,5 @@ export default function AllLocations({ serverLocations }: {serverLocations: any}
 
         </SheetContent>
       </Sheet>
-  )
+    );
 }
