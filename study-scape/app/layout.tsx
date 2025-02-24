@@ -23,9 +23,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-      <nav className="w-full flex justify-between items-center px-6 border-b border-b-foreground/10 h-16 bg-black text-white">
+    <html lang="en" className="scrollbar-hide">
+      <body className="h-screen overflow-hidden">
+      <nav className="fixed top-0 left-0 w-full flex justify-between items-center px-6 border-b border-b-foreground/10 h-16 bg-black text-white z-50">
             {/* Logo */}
             <div className="text-lg font-bold text-purple">
               <Link href="/">StudyScape</Link>
@@ -46,7 +46,7 @@ export default function RootLayout({
               </Link>
             </div>
           </nav>
-        <main>{children} </main>
+        <main className="absolute top-16 left-0 w-full bottom-0">{children} </main>
       </body>
     </html>
   );
