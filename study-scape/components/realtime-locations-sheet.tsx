@@ -38,8 +38,10 @@ export default function AllLocations({ serverLocations }: {serverLocations: any}
         }
     }, [supabase, locations, setLocations]);
 
+    type FilterName = 'hasWifi' | 'hasFood' | 'hasRestrooms' | 'hasPrinters';
+
     // Function to toggle filters
-    const toggleFilter = (filter: string) => {
+    const toggleFilter = (filter: FilterName) => {
       setFilters((prev) => ({
           ...prev,
           [filter]: !prev[filter],
@@ -80,7 +82,7 @@ export default function AllLocations({ serverLocations }: {serverLocations: any}
                   className={`px-3 py-1 rounded-md text-xs ${
                     filters[filter as keyof typeof filters] ? "bg-purple-500 text-white" : "bg-gray-200 text-black"
                   }`}
-                  onClick={() => toggleFilter(filter)}
+                  onClick={() => toggleFilter(filter as FilterName)}
                   >
                   {filter.replace('has', '')}
                 </Button>
