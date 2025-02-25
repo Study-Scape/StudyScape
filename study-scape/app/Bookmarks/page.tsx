@@ -6,8 +6,8 @@ export default async function Page() {
   const { data: bookmarks } = await supabase.from('locations').select().not('isBookmarked', 'is', null);
 
   return (
-    <main className='flex justify-center min-h-screen w-full py-8'>
-        <div className='w-full max-w-3xl px-4'>
+    <div className='h-full w-full overflow-y-auto scrollbar-hide'>
+        <div className='w-full max-w-3xl px-4 py-8 mx-auto'>
             {bookmarks?.map((location, index) => (
               <div key={index} className="mb-4 p-4 border rounded-lg">
                 <span className="px-1 py-1 bg-slate-200 text-slate-600 text-sm rounded-full">
@@ -67,7 +67,7 @@ export default async function Page() {
                   </div>
               </div>
             ))}
-          </div>
-    </main>
+        </div>
+    </div>
   )
 }
