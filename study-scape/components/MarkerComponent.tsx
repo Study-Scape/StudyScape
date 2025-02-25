@@ -8,32 +8,32 @@ interface MarkerProps {
 }
 
 const MarkerComponent: React.FC<MarkerProps> = ({
-    map,
-    coordinates, 
-    popupText
+map,
+coordinates,
+popupText
 }) => {
-    const markerRef = useRef<mapboxgl.Marker | null>(null);
+const markerRef = useRef<mapboxgl.Marker | null>(null);
 
-    useEffect(() => {
-        if (!map || !coordinates) return;
+useEffect(() => {
+    if (!map || !coordinates) return;
 
-        const marker = new mapboxgl.Marker({color: 'DarkOrchid'})
-            .setLngLat(coordinates)
-            .addTo(map);
+    const marker = new mapboxgl.Marker({ color: 'DarkOrchid' })
+    .setLngLat(coordinates)
+    .addTo(map);
 
-        if (popupText) {
-            const popup = new mapboxgl.Popup().setText(popupText)
-            markerRef.current?.setPopup()
-        }
+    if (popupText) {
+    const popup = new mapboxgl.Popup().setText(popupText);
+    marker.setPopup(popup);
+    }
 
-        markerRef.current = marker;
+    markerRef.current = marker;
 
-        return () => {
-            marker.remove()
-        };
-    }, [map, coordinates, popupText]);
+    return () => {
+    marker.remove();
+    };
+}, [map, coordinates, popupText]);
 
-    return null;
-}
+return null;
+};
 
 export default MarkerComponent;

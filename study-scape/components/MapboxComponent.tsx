@@ -2,6 +2,8 @@
 
 import { useRef, useEffect, useState, use } from 'react';
 import mapboxgl, { Marker } from 'mapbox-gl';
+import { createClient } from '@/utils/supabase/client';
+
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './MapboxComponent.css';
@@ -15,6 +17,12 @@ interface MapboxComponentProps {
   maxBounds?: [[number, number], [number, number]]
 }
 
+interface Location {
+  name: string;
+  longitude: number;
+  latitude: number;
+}
+
 const MapboxComponent: React.FC<MapboxComponentProps> = ({
   center = [-122.306976, 47.655531],
   zoom = 14.5,
@@ -24,6 +32,9 @@ const MapboxComponent: React.FC<MapboxComponentProps> = ({
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [locations, setLocations] = useState<Location[]>([]);
+  
+  const supabase = createClient();
 
   useEffect(() => {
     setIsMounted(true);
@@ -56,18 +67,33 @@ const MapboxComponent: React.FC<MapboxComponentProps> = ({
     };
   }, [isMounted]);
 
-  if (!isMounted) return null;
+  useEffect(() => {
+    const fetchLocations = async () => {
+      const { data, error } = await supabase
+        .from('locations')
+        .select('*');
 
+      if (error) {
+        console.error('Error fetching locations:', error);
+      } else {
+        setLocations(data);
+      }
+    };
+
+    fetchLocations();
+  }, [supabase]);
+
+  if (!isMounted) return null;
+  
   return (
     <div id="map-container" ref={mapContainerRef} style={{ width: '100%', height: '100vh' }}>
-      {mapLoaded && mapRef.current && (
-        <>
-          <MarkerComponent map={mapRef.current} coordinates={[-122.304641, 47.654584]}/>
-          <MarkerComponent map={mapRef.current} coordinates={[-122.307842, 47.655885]}/>
-          <MarkerComponent map={mapRef.current} coordinates={[-122.305072, 47.653372]}/>
-          <MarkerComponent map={mapRef.current} coordinates={[-122.310363, 47.656646]}/>
-        </>
-      )}
+      {mapLoaded && mapRef.current && locations.map((location) => (
+        <MarkerComponent
+          map={mapRef.current}
+          coordinates={[location.longitude, location.latitude]}
+          popupText={location.name}
+        />
+      ))}
     </div>
   );
 };
