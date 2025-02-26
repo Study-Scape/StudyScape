@@ -12,7 +12,7 @@ Overall, this project seeks to empower university students to make informed deci
 about where to study based on their preferences and needs.
 
 ## Users and Developers guide
-We now have guides in one location! Access the documentation (here)[https://docs.google.com/document/d/1rZ31D1uOTsLFKJloVl5T59feAOC0EVws56s-OQ7Rgx0/edit?usp=sharing].
+We now have guides in one location! Access the documentation [here](https://docs.google.com/document/d/1rZ31D1uOTsLFKJloVl5T59feAOC0EVws56s-OQ7Rgx0/edit?usp=sharing).
 
 ## Toolchain and processes
 To build and test the system, make sure to perform `git pull` to obtain the latest information before committing and pushing changes. All files required for testing, as well as the files themselves, are located on this repository. Code is built on the local IDEs of the developers and managed via Git and GitHub Actions.
