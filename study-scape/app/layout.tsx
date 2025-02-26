@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scrollbar-hide">
       <body className="h-screen overflow-hidden">
-      <nav className="fixed top-0 left-0 w-full flex justify-between items-center px-6 h-16 bg-indigo-500 text-slate-200 z-50 rounded-b-2xl shadow-lg">
+      <nav className="fixed top-0 left-0 w-full flex justify-between items-center px-10 h-16 bg-indigo-500 text-slate-200 z-50 shadow-xl">
             {/* Logo */}
             <div className="text-lg font-bold text-purple hover:text-indigo-600 duration-300">
               <Link href="/">StudyScape</Link>
