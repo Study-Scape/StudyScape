@@ -1,11 +1,8 @@
-import Image from 'next/image';
-
 export default function ProfilePage() {
   const user = {
     name: "Jane Doe",
     username: "@jane_studious",
     bio: "Passionate learner | Coffee enthusiast | Always seeking quiet study spots",
-    profilePicture: "/placeholder.jpg",
     favoriteSpots: ["UW Engineering Library", "Odegaard Undergraduate Library"],
     noisePreference: "Quiet",
     reviewCount: 15,
@@ -15,27 +12,16 @@ export default function ProfilePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-100 to-indigo-200 p-6">
       <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-2xl overflow-hidden">
-        <div className="md:flex">
-          <div className="md:flex-shrink-0">
-            <Image
-              className="h-48 w-full object-cover md:w-48"
-              src={user.profilePicture}
-              alt={user.name}
-              width={192}
-              height={192}
-            />
+        <div className="p-8">
+          <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+            {user.username}
           </div>
-          <div className="p-8">
-            <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
-              {user.username}
-            </div>
-            <h1 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              {user.name}
-            </h1>
-            <p className="mt-2 text-xl text-gray-500">
-              {user.bio}
-            </p>
-          </div>
+          <h1 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+            {user.name}
+          </h1>
+          <p className="mt-2 text-xl text-gray-500">
+            {user.bio}
+          </p>
         </div>
         
         <div className="px-8 py-6 bg-gray-50">
