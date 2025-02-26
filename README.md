@@ -38,3 +38,8 @@ As of the latest commits, the exact use cases outlined in our project requiremen
    1. User wants to visually see the locations available and pan around the map for further options.
    2. User wants to see the full list of study locations available (no filters applied)
    3. User wants to access "favorited" spots via the "bookmarks" link at the top-right of the page.
+
+## Second version release!
+   1. Revamped UI!
+   2. Search and filter of locations list
+   3. Live site! https://study-scape.netlify.app/
