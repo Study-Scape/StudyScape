@@ -25,23 +25,23 @@ export default function RootLayout({
   return (
     <html lang="en" className="scrollbar-hide">
       <body className="h-screen overflow-hidden">
-      <nav className="fixed top-0 left-0 w-full flex justify-between items-center px-6 border-b border-b-foreground/10 h-16 bg-black text-white z-50">
+      <nav className="fixed top-0 left-0 w-full flex justify-between items-center px-6 h-16 bg-indigo-500 text-slate-200 z-50 rounded-b-2xl shadow-lg">
             {/* Logo */}
-            <div className="text-lg font-bold text-purple">
+            <div className="text-lg font-bold text-purple hover:text-indigo-600 duration-300">
               <Link href="/">StudyScape</Link>
             </div>
             {/* Navigation Links */}
-            <div className="flex gap-10">
-              <Link href="/" className="hover:text-purple-500">
+            <div className="flex gap-3">
+              <Link href="/" className="bg-slate-200 text-indigo-800 px-4 py-1 rounded-full font-medium shadow-sm hover:text-purple-500 hover:bg-indigo-200 duration-500">
                 Home
               </Link>
-              <Link href="/About" className="hover:text-purple-500">
+              <Link href="/About" className="bg-slate-200 text-indigo-800 px-4 py-1 rounded-full font-medium shadow-sm hover:text-purple-500 hover:bg-indigo-200 duration-500">
                 About
               </Link>
-              <Link href="/Bookmarks" className="hover:text-purple-500">
+              <Link href="/Bookmarks" className="bg-slate-200 text-indigo-800 px-4 py-1 rounded-full font-medium shadow-sm hover:text-purple-500 hover:bg-indigo-200 duration-500">
                 Bookmarks
               </Link>
-              <Link href="/Profile" className="hover:text-purple-500">
+              <Link href="/Profile" className="bg-slate-200 text-indigo-800 px-4 py-1 rounded-full font-medium shadow-sm hover:text-purple-500 hover:bg-indigo-200 duration-500">
                 Profile
               </Link>
             </div>
