@@ -21,15 +21,17 @@ First production build deployed.
 - Carl: Improve current testing and automate that new testing. Transition to full-stack dev to build CRUD features. Improve UI/UX.
 - Dawn: After implementation of Supabase to StudyScape, figure out how to have schema store and display information from users' reviews.
 - Julie: More UI implementations and fleshing out the features we have, and brainstorming more features to be implemented.
+- Michael: Either work on the GPS aspect, or custom markers. Have the markers connect with the locations automatically, rather than having to manually make markers. 
 
 
 ### Progress and issues
 - Carl: Modularized all locations sheet into a component. Implemented Supabase's Realtime API for database inserts and updates to rows. Implemented Supabase client and server components.
 - Dawn: Progress has been hindered due to exams but will get back up to speed around the end of the week hopefully. Did help out with outlining and uploading the user and developer guides. Updated Supabase schemas to reflect current needs.
 - Julie: I made pseudo profile page and made the UI of booksmarks page better.
-
+- Michael: made an initial gps feature for the map, and added name markers and longitude and latitude for the markers, which directly pull from Supabase. 
 
 ### Goals for next week
 - Carl: Refine data creation and inserting to database from frontend. Implement location images to front and backend. Deploy a production build and host the webapp.(~1 week)
 - Dawn: Refine data creation and inserting to database from frontend. Implement location images to front and backend. (aka try to help Carl)
 - Julie: Make more UI implementations and think of other features to code.
+- Michael: add more information to the markers, and refine the gps system. 
