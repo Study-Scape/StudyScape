@@ -22,8 +22,8 @@ useEffect(() => {
     .addTo(map);
 
     if (popupText) {
-    const popup = new mapboxgl.Popup().setText(popupText);
-    marker.setPopup(popup);
+        const popup = new mapboxgl.Popup().setText(popupText);
+        marker.setPopup(popup);
     }
 
     markerRef.current = marker;
