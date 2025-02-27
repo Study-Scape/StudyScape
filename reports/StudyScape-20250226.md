@@ -23,6 +23,7 @@ First production build deployed.
 - Julie: More UI implementations and fleshing out the features we have, and brainstorming more features to be implemented.
 - Michael: Either work on the GPS aspect, or custom markers. Have the markers connect with the locations automatically, rather than having to manually make markers. 
 - Brandon: link marker components to backend and frontend for more interactivity and scalability.
+- Sanjana: Adding more UI features, specifically adding more filtering options and brainstorming other features. 
 
 
 ### Progress and issues
@@ -30,7 +31,8 @@ First production build deployed.
 - Dawn: Progress has been hindered due to exams but will get back up to speed around the end of the week hopefully. Did help out with outlining and uploading the user and developer guides. Updated Supabase schemas to reflect current needs.
 - Julie: I made pseudo profile page and made the UI of booksmarks page better.
 - Michael: made an initial gps feature for the map, and added name markers and longitude and latitude for the markers, which directly pull from Supabase.
-- Brandon: worked on connnecting markers to backend to pull name and location to automatically display on map. 
+- Brandon: worked on connnecting markers to backend to pull name and location to automatically display on map.
+- Sanjana: Worked on making the location list search bar functional, adding filters, and updating about page UI.
 
 ### Goals for next week
 - Carl: Refine data creation and inserting to database from frontend. Implement location images to front and backend. Deploy a production build and host the webapp.(~1 week)
@@ -38,3 +40,4 @@ First production build deployed.
 - Julie: Make more UI implementations and think of other features to code.
 - Michael: add more information to the markers, and refine the gps system. 
 - Brandon: Add more information to markers and maybe add interaction with frontend location list.
+- Sanjana: Add more UI features and brainstorm how to improve the current ones. 
