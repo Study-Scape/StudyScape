@@ -18,6 +18,7 @@ interface MapboxComponentProps {
 }
 
 interface Location {
+  uuid: string;
   name: string;
   longitude: number;
   latitude: number;
@@ -89,6 +90,7 @@ const MapboxComponent: React.FC<MapboxComponentProps> = ({
     <div id="map-container" ref={mapContainerRef} style={{ width: '100%', height: '100vh' }}>
       {mapLoaded && mapRef.current && locations.map((location) => (
         <MarkerComponent
+          key={location.uuid}
           map={mapRef.current}
           coordinates={[location.longitude, location.latitude]}
           popupText={location.name}
