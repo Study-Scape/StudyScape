@@ -1,4 +1,4 @@
-# Study Scape Status Report 2/26/2025
+# Study Scape Status Report 3/6/2025
 
 ## Project Status
 
@@ -20,13 +20,16 @@ Work on peer-reviewed/own issues. Final build and live release.
 ### Goals for the week
 - Carl: Build remaining CRUD features and implement real user auth. Improve current testing and automate that new testing. Work on peer-reviewed issues especially our guides and READMEs.
 - Julie: Work on peer-reviewed issues and improve overall UI of website.
+- Michael: add more information to the markers, and refine the gps system. 
 
 
 ### Progress and issues
 - Carl: Deployed a production build and hosted the webapp. There was an issue in ensuring devs can run our local tests that needs revisiting.
 - Julie: Worked on peer reviewing the other team's project, and brainstorming what to add for final release of the website.
+- Michael: Worked on peer review, slightly explored further map features, but didn't get far. 
 
 
 ### Goals for next week
 - Carl: Finish final release with polished features, ensure live build handles real user auth. (~1 week)
 - Julie: Finish final release with everyone, and make sure there are no bugs.
+- Michael: Finish final release. Flesh out the map. 
