@@ -23,6 +23,7 @@ Work on peer-reviewed/own issues. Final build and live release.
 - Michael: add more information to the markers, and refine the gps system. 
 - Brandon: add more information and styling to markers
 - Dawn: Refine data creation and inserting to database from frontend. Implement location images to front and backend. (aka try to help Carl)
+- Sanjana: Work on building user authentication page and improving website UI.
 
 
 ### Progress and issues
@@ -31,6 +32,7 @@ Work on peer-reviewed/own issues. Final build and live release.
 - Michael: Worked on peer review, slightly explored further map features, but didn't get far. 
 - Brandon: Worked on peer review, looked into adding more information and styling for makers.
 - Dawn: User and Dev guides did not display information as intended (got an issue opened for that), figuring out how to fix that + implement "add study location" button to receive user input to update database
+- Sanjana: Worked on peer reviewing document, explored features to include in final release.
 
 
 ### Goals for next week
@@ -39,3 +41,4 @@ Work on peer-reviewed/own issues. Final build and live release.
 - Michael: Finish final release. Flesh out the map. 
 - Brandon: Finish final realease. Add more styling to markers.
 - Dawn: Finish final release with added functionality and better readability for user and dev guides
+- Sanjana: Finish final release and polish UI features.
