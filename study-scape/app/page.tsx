@@ -10,7 +10,6 @@ export default async function Home() {
   return (
     <main>
       <div style={{ position: "relative", height: "100vh", width: "100vw" }}>
-        <FloatingSearch/>
         <div 
           style={{
           position: "absolute",
