@@ -22,6 +22,7 @@ interface Location {
   name: string;
   longitude: number;
   latitude: number;
+  hasPicture: string;
 }
 
 const MapboxComponent: React.FC<MapboxComponentProps> = ({
@@ -94,6 +95,7 @@ const MapboxComponent: React.FC<MapboxComponentProps> = ({
           map={mapRef.current}
           coordinates={[location.longitude, location.latitude]}
           popupText={location.name}
+          imageUrl = {location.hasPicture}
         />
       ))}
     </div>
