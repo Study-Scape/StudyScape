@@ -1,5 +1,4 @@
-import MapboxComponent from '@/components/MapboxComponent'
-import FloatingSearch from "@/components/FloatingSearch";
+import MapboxComponent from '@/components/MapboxComponent';
 import { createClient } from '@/utils/supabase/server'
 import AllLocations from '@/components/realtime-locations-sheet';
 
