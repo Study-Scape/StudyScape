@@ -30,7 +30,6 @@ const MarkerComponent: React.FC<MarkerProps> = ({ map, coordinates, popupText })
         marker.getElement().addEventListener('click', async (event) => {
             event.stopPropagation();
 
-            // Ensure popupText is not undefined by using null as fallback
             const markerName = popupText ?? null;
 
             // Toggle visibility: If this marker is active, close it
@@ -46,7 +45,7 @@ const MarkerComponent: React.FC<MarkerProps> = ({ map, coordinates, popupText })
             const { data, error } = await supabase
                 .from('locations')
                 .select('avgRating, soundLevel, hasPicture')
-                .eq('name', popupText) // Ensures that name is valid
+                .eq('name', popupText)
                 .maybeSingle();
 
             if (error) {
@@ -60,10 +59,51 @@ const MarkerComponent: React.FC<MarkerProps> = ({ map, coordinates, popupText })
 
         markerRef.current = marker;
 
+        // Update popup position when the map moves
+        const updatePopupPosition = () => {
+            if (!map || !markerRef.current || !popupText || !coordinates) return;
+            
+            const markerElement = markerRef.current.getElement();
+            const markerPosition = map.project(coordinates); // Convert map coordinates to screen coordinates
+
+            setPopupPosition({
+                x: markerPosition.x - markerElement.clientWidth / 2,  // Center horizontally
+                y: markerPosition.y + markerElement.clientHeight + 10 // Position below the marker
+            });
+        };
+
+        map.on('move', updatePopupPosition);
+
         return () => {
             marker.remove();
+            map.off('move', updatePopupPosition); // Clean up on unmount
         };
     }, [map, coordinates, popupText, activeMarker]);
+
+    // Function to open Google Maps for navigation
+    const handleNavigate = () => {
+        if (!navigator.geolocation) {
+            alert("Geolocation is not supported by your browser.");
+            return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const userLat = position.coords.latitude;
+                const userLng = position.coords.longitude;
+                const destinationLat = coordinates[1];
+                const destinationLng = coordinates[0];
+
+                const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${userLat},${userLng}&destination=${destinationLat},${destinationLng}&travelmode=walking`;
+
+                window.open(googleMapsUrl, '_blank');
+            },
+            (error) => {
+                alert("Unable to retrieve your location. Please enable location services.");
+                console.error("Geolocation error:", error);
+            }
+        );
+    };
 
     return (
         <>
@@ -110,6 +150,21 @@ const MarkerComponent: React.FC<MarkerProps> = ({ map, coordinates, popupText })
                         }}
                     >
                         {expanded ? 'Hide Details' : 'Display More'}
+                    </button>
+
+                    <button
+                        onClick={handleNavigate}
+                        style={{
+                            background: 'green',
+                            color: 'white',
+                            padding: '5px',
+                            border: 'none',
+                            cursor: 'pointer',
+                            width: '100%',
+                            marginTop: '5px'
+                        }}
+                    >
+                        Navigate
                     </button>
 
                     <button
