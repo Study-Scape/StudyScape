@@ -63,6 +63,12 @@ const MapboxComponent: React.FC<MapboxComponentProps> = ({
       setMapLoaded(true);
     });
 
+    map.on('mousemove', function(event) {
+      const mouseLng = event.lngLat.lng;
+      const mouseLat = event.lngLat.lat;
+      console.log(mouseLng, mouseLat)
+    })
+
     return () => {
       map.remove();
       mapRef.current = null;
