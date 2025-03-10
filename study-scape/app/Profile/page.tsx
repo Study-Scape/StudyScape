@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 
@@ -6,31 +7,39 @@ export default async function ProfilePage() {
 
   const { data: { user }, error: authError } = await supabase.auth.getUser();
 
-  if (authError || !user) {
-    redirect('/login');
-  }
+  const userData = {
+    name: "Jane Doe",
+    username: "@jane_studious",
+    bio: "Passionate learner | Coffee enthusiast | Always seeking quiet study spots",
+    favoriteSpots: ["UW Engineering Library", "Odegaard Undergraduate Library"],
+    noisePreference: "Quiet",
+    reviewCount: 15,
+    avgRating: 4.2,
+  };
 
-  const { data: profile, error: profileError } = await supabase
+  if (user && !authError) {
+    const { data: profile, error: profileError } = await supabase
     .from('users')
     .select('*')
     .eq('id', user.id)
     .single();
-    
-  const metadata = user.user_metadata || {};
-  console.log("Auth User ID:", user.id);
-console.log("Profile Query Error:", profileError);
-console.log("Profile Data:", profile);
 
 
-  const userData = {
-    name: `${profile.first_name || ''} ${profile.last_name || ''}`.trim() || 'New User',
-    username: '@' + profile.username || '@user',
-    bio: profile.bio || "Passionate learner | Coffee enthusiast | Always seeking quiet study spots",
-    favoriteSpots: profile.favorite_spots || ["UW Engineering Library", "Odegaard Undergraduate Library"],
-    noisePreference: profile.noise_preference || "Quiet",
-    reviewCount: profile.review_count || 0,
-    avgRating: profile.avg_rating || 0,
-  };
+    //sanity checks
+    console.log("Auth User ID:", user.id);
+    console.log("Profile Query Error:", profileError);
+    console.log("Profile Data:", profile);
+
+    if (profile && !profileError) {
+      userData.name = `${profile.first_name || ''} ${profile.last_name || ''}`.trim(),
+      userData.username = '@' + profile.username;
+      userData.bio = profile.bio || '(add a bio!)';
+      userData.favoriteSpots = profile.favorite_spots || ["favorite", "some", "spots!"];
+      userData.noisePreference = profile.noise_preference || '(choose a noise preference!)';
+      userData.reviewCount = profile.review_count || '(write a review!)';
+      userData.avgRating = profile.avg_rating || '(rate a study spot!)';
+    }
+}
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-100 to-indigo-200 p-6">
@@ -79,10 +88,20 @@ console.log("Profile Data:", profile);
           </div>
         </div>
         
+        {/* Is user signed in? */}
         <div className="px-8 py-6">
-          <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
-            Edit Profile
-          </button>
+          {user ? (
+            <Button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+              Edit Profile
+            </Button>
+          ) : (
+            <Button 
+            /*onClick={() => redirect('/login')}*/
+            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300"
+            >
+              Login!
+            </Button>
+          )}
         </div>
       </div>
     </div>
