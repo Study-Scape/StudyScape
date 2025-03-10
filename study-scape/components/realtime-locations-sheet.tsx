@@ -158,22 +158,22 @@ export default function AllLocations({ serverLocations }: {serverLocations: any}
                     <div className='flex flex-wrap gap-1'>
                         {location.hasWifi && (
                           <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
-                              {location.hasWifi}
+                            WiFi Available
                           </span>
                         )}
                         {location.hasFood && (
                           <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">
-                            {location.hasFood}
+                            Food Nearby
                           </span>
                         )}
                         {location.hasRestrooms && (
                           <span className="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">
-                            {location.hasRestrooms}
+                            Restrooms
                           </span>
                         )}
                         {location.hasPrinters && (
                           <span className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">
-                            {location.hasPrinters}
+                            Printers Available
                           </span>
                         )}
                     </div>
@@ -183,7 +183,11 @@ export default function AllLocations({ serverLocations }: {serverLocations: any}
                         <span className='text-red-600 px-2 bg-red-50 rounded-full'>{location.avgRating}</span>
                         <small><span className='text-red-600 text-xs pr-4'> stars</span></small>
                         <small><span className='text-green-600 text-xs'>Noise level: </span></small>
-                        <span className='text-green-600 rounded-full'>{location.soundLevel}</span>
+                        <span className='text-green-600 rounded-full'>
+                          {location.soundLevel == 1 && (<span className='text-green-600 rounded-full'> Quiet </span>)}
+                          {location.soundLevel == 2 && (<span className='text-green-600 rounded-full'> Chatter </span>)}
+                          {location.soundLevel == 3 && (<span className='text-green-600 rounded-full'> Loud </span>)}
+                          </span>
                       </div>
 
                     {/* Accessibility Features */}
@@ -195,17 +199,17 @@ export default function AllLocations({ serverLocations }: {serverLocations: any}
                         <div className='flex flex-wrap gap-1'>
                             {location.hasElevator && (
                               <span className='px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded-full'>
-                                {location.hasElevator}
+                                Elevator Available
                               </span>
                             )}
                             {location.quietSpaces && (
                               <span className='px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full'>
-                                  {location.quietSpaces}
+                                  Quiet Spaces
                               </span>
                             )}
                             {location.hasBikeRack && (
                               <span className='px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full'>
-                                  {location.hasBikeRack}
+                                  Bike Rack Available
                               </span>
                             )}
                           </div>
