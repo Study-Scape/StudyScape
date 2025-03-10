@@ -83,7 +83,7 @@ export default async function ProfilePage() {
             </div>
             <div>
               <p className="text-lg text-gray-600">Average Rating</p>
-              <p className="text-3xl font-bold text-indigo-600">{userData.avgRating}/5</p>
+              <p className="text-3xl font-bold text-indigo-600">{userData.avgRating}</p>
             </div>
           </div>
         </div>
