@@ -10,6 +10,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { useEffect, useState } from 'react';
+import { StarRating } from "@/components/StarRating";
 
 export default function AllLocations({ serverLocations }: {serverLocations: any}) {
     const supabase = createClient();
@@ -214,7 +215,13 @@ export default function AllLocations({ serverLocations }: {serverLocations: any}
                             )}
                           </div>
                       </div>
+                <div className="mt-2">
+                    <span className="py-1 text-red-500 text-sm font-semibold">
+                        Rate Location:
+                    </span>
+                  <StarRating locationUuid={location.uuid} />
                 </div>
+              </div>
             ))
           ) : (
             <p className="text-gray-500 mt-4">No locations match your filters.</p>
