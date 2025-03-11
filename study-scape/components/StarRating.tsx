@@ -43,6 +43,19 @@ const StarRating = ({ locationUuid }: { locationUuid: string }) => {
           .single();
 
       if (existingRating) {
+
+        if (newRating === 0) {
+            // If the user unselects all stars, delete the rating
+            const { error: deleteError } = await supabase
+                .from('ratings')
+                .delete()
+                .eq('id', existingRating.id);
+
+            if (deleteError) {
+                console.error("Error deleting rating:", deleteError);
+                return;
+            }
+        } else {
           // Update the existing rating
           const { error: updateError } = await supabase
               .from('ratings')
@@ -53,6 +66,7 @@ const StarRating = ({ locationUuid }: { locationUuid: string }) => {
               console.error("Error updating rating:", updateError);
               return;
           }
+        }
       } else {
           // Insert a new rating
           const { error: insertError } = await supabase
@@ -65,7 +79,7 @@ const StarRating = ({ locationUuid }: { locationUuid: string }) => {
           }
       }
   };    
-  
+
     return (
       <div className="flex">
         {[1, 2, 3, 4, 5].map((star) => (
@@ -75,10 +89,7 @@ const StarRating = ({ locationUuid }: { locationUuid: string }) => {
             size={20}
             onMouseEnter={() => setHover(star)}
             onMouseLeave={() => setHover(null)}
-            onClick={() => {
-                console.log("Star clicked", star); // Check if this logs to the console
-                submitRating(star);
-              }}
+            onClick={() => submitRating(rating === star ? 0 : star)} // Clicking again deselects
           />
         ))}
       </div>
