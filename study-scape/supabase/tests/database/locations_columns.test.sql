@@ -29,5 +29,12 @@ SELECT has_column(
     'soundLevel column should exist'
 );
 
+SELECT has_column(
+    'public',
+    'locations',
+    'imagine',
+    'imagine column shouldnt exist'
+);
+
 select * from finish();
 rollback;
