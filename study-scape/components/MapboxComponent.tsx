@@ -24,6 +24,7 @@ interface Location {
   hasBikeRack: boolean;
   soundLevel: number;
   hasPicture: string;
+  address: string;
 }
 
 const MapboxComponent: React.FC = () => {
@@ -93,6 +94,7 @@ const MapboxComponent: React.FC = () => {
         hasElevator: false,
         hasBikeRack: false,
         soundLevel: 1,
+        hasPicture: "",
       });
       setIsAddingLocation(false);
     };
@@ -104,14 +106,71 @@ const MapboxComponent: React.FC = () => {
     };
   }, [isAddingLocation]);
 
-  const handleFormSubmit = () => {
+  const handleFormSubmit = async () => {
     if (!formData?.name) {
-      alert("Please enter a location name.");
-      return;
+        alert("Please enter a location name.");
+        return;
     }
-    setLocations((prev) => [...prev, { ...formData, uuid: crypto.randomUUID() } as Location]);
+
+    if (!formData?.address) {
+        alert("Please enter an address.");
+        return;
+    }
+
+    // Get the currently authenticated user
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError || !user) {
+        console.error("User not authenticated:", authError);
+        alert("You must be logged in to add a location.");
+        return;
+    }
+
+    // Retrieve the user's ID from the `users` table
+    const { data: userData, error: userError } = await supabase
+        .from('users')
+        .select('id')
+        .eq('id', user.id)
+        .single();
+
+    if (userError || !userData) {
+        console.error("Error fetching user ID:", userError);
+        alert("Failed to verify user.");
+        return;
+    }
+
+    const newLocation: Location = {
+      uuid: crypto.randomUUID(),
+      name: formData.name,
+      address: formData.address || "", 
+      longitude: parseFloat(formData.longitude!.toFixed(6)),
+      latitude: parseFloat(formData.latitude!.toFixed(6)),
+      hasRestrooms: formData.hasRestrooms ?? false,
+      hasFood: formData.hasFood ?? false,
+      hasOutlets: formData.hasOutlets ?? false,
+      hasPrinters: formData.hasPrinters ?? false,
+      hasWifi: formData.hasWifi ?? false,
+      hasElevator: formData.hasElevator ?? false,
+      hasBikeRack: formData.hasBikeRack ?? false,
+      soundLevel: formData.soundLevel ?? 1,
+      hasPicture: formData.hasPicture ?? "",
+    };
+
+    console.log("Attempting to insert location:", newLocation);
+
+    const { error: insertError } = await supabase.from("locations").insert([newLocation]);
+    if (insertError) {
+        console.error("Error saving location:", insertError);
+        alert(`Failed to save location: ${insertError.message}`);
+        return;
+    }
+
+    setLocations((prev) => [...prev, newLocation]);
+    alert("Location saved successfully!");
     setFormData(null);
-  };
+};
+
+
+
 
   return (
     <div id="map-container" ref={mapContainerRef} style={{ width: "100%", height: "100vh" }}>
@@ -131,14 +190,25 @@ const MapboxComponent: React.FC = () => {
       {formData && (
         <div className="popup-form">
           <h3 style={{ fontSize: "1.5em", fontWeight: "bold" }}>Add Location</h3>
+          
           <input
             type="text"
             placeholder="Location Name"
             value={formData.name || ""}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           />
-          {["hasRestrooms", "hasFood", "hasOutlets", "hasPrinters", "hasWifi", "hasElevator", "hasBikeRack"].map((field) => (
-            <label key={field} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+
+          <input
+            type="text"
+            placeholder="Address"
+            value={formData.address || ""}
+            onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+          />
+
+          {[
+            "hasRestrooms", "hasFood", "hasOutlets", "hasPrinters", "hasWifi", "hasElevator", "hasBikeRack"
+          ].map((field) => (
+            <label key={field} style={{ display: "flex", alignItems: "center", gap: "5px" }}>
               <input
                 type="checkbox"
                 checked={formData[field as keyof Location] as boolean}
@@ -147,17 +217,16 @@ const MapboxComponent: React.FC = () => {
               {field.replace("has", "Has ")}
             </label>
           ))}
-          <label>
-            Sound Level:
-            <select
-              value={formData.soundLevel}
+
+          <label>Sound Level:
+            <select 
+              value={formData.soundLevel || 1} 
               onChange={(e) => setFormData({ ...formData, soundLevel: Number(e.target.value) })}
             >
-              {[1, 2, 3].map((level) => (
-                <option key={level} value={level}>{level}</option>
-              ))}
+              {[1, 2, 3, 4, 5].map(level => <option key={level} value={level}>{level}</option>)}
             </select>
           </label>
+          
           <button onClick={handleFormSubmit}>Save</button>
         </div>
       )}
