@@ -1,6 +1,7 @@
 import MapboxComponent from '@/components/MapboxComponent';
 import { createClient } from '@/utils/supabase/server'
 import AllLocations from '@/components/realtime-locations-sheet';
+import AddLocationButton from '@/components/AddLocationButton';
 
 export default async function Home() {
   const supabase = await createClient();
@@ -11,15 +12,15 @@ export default async function Home() {
       <div style={{ position: "relative", height: "100vh", width: "100vw" }}>
         <div 
           style={{
-          position: "absolute",
-          height: "100%",
-          width: "100%",
+            position: "absolute",
+            height: "100%",
+            width: "100%",
           }}
         >
-        <MapboxComponent />
-        <AllLocations serverLocations={ data ?? []} />
+          <MapboxComponent />
+          <AllLocations serverLocations={ data ?? []} />
         </div>
-        </div>
+      </div>
     </main>
-  )
+  );
 }
