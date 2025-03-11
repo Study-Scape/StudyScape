@@ -64,31 +64,6 @@ const StarRating = ({ locationUuid }: { locationUuid: string }) => {
               return;
           }
       }
-  
-      // Recalculate the new avgRating
-      const { data: ratingsData, error: fetchRatingsError } = await supabase
-          .from('ratings')
-          .select('rating')
-          .eq('locations_id', locationUuid);
-  
-      if (fetchRatingsError) {
-          console.error("Error fetching ratings:", fetchRatingsError);
-          return;
-      }
-
-      // Compute new average rating
-      const allRatings = ratingsData.map(r => r.rating);
-      const newAvgRating = allRatings.reduce((a, b) => a + b, 0) / allRatings.length;
-  
-      // Update the avgRating in the locations table
-      const { error: updateAvgError } = await supabase
-          .from('locations')
-          .update({ avgRating: newAvgRating })
-          .eq('uuid', locationUuid);
-  
-      if (updateAvgError) {
-          console.error("Error updating avgRating:", updateAvgError);
-      }
   };    
   
     return (
