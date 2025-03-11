@@ -9,9 +9,9 @@ export default async function Page() {
 
   return (
     <div
-      className="h-full w-full overflow-y-auto scrollbar-hide bg-gradient-to-br from-purple-100 to-indigo-200 p-6"
+      className="h-full w-full overflow-y-auto scrollbar-hide bg-gradient-to-br from-purple-100 to-indigo-200"
     >
-      <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-2xl overflow-hidden">
+      <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-2xl p-6">
         <div className="w-full px-8 py-8">
           <h1 className="text-3xl font-bold text-gray-800 mb-6">Bookmarked Locations</h1>
           {bookmarks?.map((location, index) => (
