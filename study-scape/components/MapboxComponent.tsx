@@ -28,6 +28,7 @@ interface Location {
 }
 
 const MapboxComponent: React.FC = () => {
+  const [clickPosition, setClickPosition] = useState<{ x: number; y: number } | null>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
   const [mapLoaded, setMapLoaded] = useState(false);
@@ -79,10 +80,15 @@ const MapboxComponent: React.FC = () => {
     if (!mapRef.current) return;
     const map = mapRef.current;
 
-    const handleMapClick = (event: mapboxgl.MapMouseEvent) => {
+    const handleMapClick = (event: mapboxgl.MapMouseEvent & { originalEvent: MouseEvent }) => {
       if (!isAddingLocation) return;
 
       const { lng, lat } = event.lngLat;
+
+      const tempMarker: mapboxgl.Marker = new mapboxgl.Marker()
+        .setLngLat([lng, lat])
+        .addTo(map);
+    
       setFormData({
         longitude: lng,
         latitude: lat,
@@ -96,6 +102,7 @@ const MapboxComponent: React.FC = () => {
         soundLevel: 1,
         hasPicture: "",
       });
+      setClickPosition({ x: event.originalEvent.clientX, y: event.originalEvent.clientY });
       setIsAddingLocation(false);
     };
 
@@ -187,8 +194,12 @@ const MapboxComponent: React.FC = () => {
 
       <AddLocationButton isAdding={isAddingLocation} toggleAddingMode={() => setIsAddingLocation((prev) => !prev)} />
 
-      {formData && (
-        <div className="popup-form">
+      {formData && clickPosition && (
+        <div className="popup-form" style={{
+          left: clickPosition.x,
+          top: clickPosition.y - 70,
+          position: "absolute",
+        }}>
           <h3 style={{ fontSize: "1.5em", fontWeight: "bold" }}>Add Location</h3>
           
           <input
