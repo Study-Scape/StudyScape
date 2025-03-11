@@ -223,7 +223,7 @@ const MapboxComponent: React.FC = () => {
               value={formData.soundLevel || 1} 
               onChange={(e) => setFormData({ ...formData, soundLevel: Number(e.target.value) })}
             >
-              {[1, 2, 3, 4, 5].map(level => <option key={level} value={level}>{level}</option>)}
+              {[1, 2, 3].map(level => <option key={level} value={level}>{level}</option>)}
             </select>
           </label>
           
