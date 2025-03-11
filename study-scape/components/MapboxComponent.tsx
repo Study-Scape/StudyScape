@@ -199,8 +199,33 @@ const MapboxComponent: React.FC = () => {
           left: clickPosition.x,
           top: clickPosition.y - 70,
           position: "absolute",
+          background: "white",
+          padding: "15px",
+          borderRadius: "8px",
+          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+          border: "1px solid #ccc",
+          minWidth: "250px"
         }}>
-          <h3 style={{ fontSize: "1.5em", fontWeight: "bold" }}>Add Location</h3>
+          {/* Close button */}
+          <button 
+            onClick={() => setFormData(null)} 
+            style={{
+              position: "absolute",
+              top: "5px",
+              right: "5px",
+              border: "none",
+              background: "transparent",
+              fontSize: "1.2em",
+              fontWeight: "bold",
+              cursor: "pointer",
+              color: "#333", // Ensures visibility
+              padding: "5px",
+            }}
+          >
+            ✖
+          </button>
+
+          <h3 style={{ fontSize: "1.5em", fontWeight: "bold", marginTop: "10px" }}>Add Location</h3>
           
           <input
             type="text"
@@ -241,6 +266,8 @@ const MapboxComponent: React.FC = () => {
           <button onClick={handleFormSubmit}>Save</button>
         </div>
       )}
+
+
     </div>
   );
 };
