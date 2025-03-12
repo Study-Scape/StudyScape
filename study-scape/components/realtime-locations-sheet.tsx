@@ -64,6 +64,75 @@ export default function AllLocations({ serverLocations }: {serverLocations: any}
       accessibility: AccessibilityFilters;
     };
 
+    /* { Reviews } */
+    const [reviews, setReviews] = useState<any>({});
+    const [newReview, setNewReview] = useState('');
+
+    /* { Real Time Reviews } */
+    useEffect(() => {
+      // Check if reviews are stored in localStorage and load them
+      const storedReviews = localStorage.getItem('reviews');
+      if (storedReviews) {
+        setReviews(JSON.parse(storedReviews));
+      }
+  
+      // Real-time updates for reviews
+      const channel = supabase
+        .channel('realtime reviews')
+        .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'reviews' },
+          (payload) => {
+            setReviews((prev: any) => {
+              const updatedReviews = {
+                ...prev,
+                [payload.new.location_id]: [...(prev[payload.new.location_id] || []), payload.new]
+              };
+              localStorage.setItem('reviews', JSON.stringify(updatedReviews)); // Save to localStorage
+              return updatedReviews;
+            });
+          }
+        )
+        .subscribe();
+  
+      return () => {
+        supabase.removeChannel(channel);
+      };
+    }, [supabase]);
+
+    const handleReviewSubmit = async (locationId: number) => {
+
+      const { error } = await supabase
+        .from('reviews')
+        .insert([{ 
+          body: newReview, 
+          date: new Date().toISOString(), 
+          location_id: locationId 
+        }]);
+
+        if (!error) {
+            setNewReview(''); // Clear the input field without adding duplicates
+        }
+    };
+
+  const handleReviewDelete = async (reviewId: number) => {
+    const { error } = await supabase
+      .from('reviews')
+      .delete()
+      .eq('id', reviewId);
+
+    if (!error) {
+      setReviews((prev: any) => {
+        const updatedReviews = { ...prev };
+        Object.keys(updatedReviews).forEach(locationId => {
+          updatedReviews[locationId] = updatedReviews[locationId].filter(
+            (review: any) => review.id !== reviewId
+          );
+        });
+        return updatedReviews;
+      });
+    }
+  };
+
+
     // Function to toggle filters
     const toggleFilter = <T extends keyof StudyFilters | keyof AccessibilityFilters>(
       category: 'study' | 'accessibility',
@@ -214,14 +283,69 @@ export default function AllLocations({ serverLocations }: {serverLocations: any}
                               </span>
                             )}
                           </div>
-                      </div>
+                      </div>                
+                
+             {/* Rating Feature */}           
+              <Sheet>
+              <div className="flex justify-between items-center">
                 <div className="mt-2">
                     <span className="py-1 text-red-500 text-sm font-semibold">
                         Rate Location:
                     </span>
-                  <StarRating locationUuid={location.uuid} />
+                    <StarRating locationUuid={location.uuid} />
                 </div>
+                <SheetTrigger asChild>
+                  <Button className="mt-3 bg-gradient-to-r from-indigo-500 to-blue-500 text-white rounded-full hover:scale-105 transition-transform duration-200">
+                    View Reviews
+                  </Button>
+                </SheetTrigger>
               </div>
+              <SheetContent>
+                <SheetHeader>
+                  <SheetTitle className="text-2xl font-bold text-indigo-500">Reviews for {location.name}</SheetTitle>
+                </SheetHeader>
+                <div className="mt-4">
+                  {reviews[location.uuid]?.map((review: any, idx: number) => (
+                    <div key={idx} className="p-4 bg-white rounded-lg shadow-md mb-4 hover:shadow-xl transition-shadow duration-300">
+                      <p className="font-medium text-gray-800">{review.body}</p>
+                      <div className="flex items-center justify-between mt-2">
+                        <p className="text-gray-500 text-xs">
+                          {new Date(review.date).toLocaleDateString(undefined, {
+                            year: 'numeric',
+                            month: 'short',
+                            day: 'numeric',
+                            timeZone: 'America/Los_Angeles'
+                          })}
+                        </p>
+                        {/* Delete link */}
+                        <span
+                          className="text-red-500 text-xs cursor-pointer hover:underline hover:text-red-700 transition-all duration-200"
+                          onClick={() => handleReviewDelete(review.id)}
+                        >
+                          🗑️ Delete
+                        </span>
+                      </div>
+                    </div>
+                  )) || <p className="text-gray-500">No reviews yet.</p>}
+                  
+                  <div className="mt-4">
+                    <textarea
+                      className="w-full p-3 rounded-md border-2 border-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      value={newReview}
+                      onChange={(e) => setNewReview(e.target.value)}
+                      placeholder="Leave a review..."
+                    />
+                    <Button
+                      onClick={() => handleReviewSubmit(location.uuid)}
+                      className="mt-3 bg-gradient-to-r from-indigo-500 to-blue-500 text-white rounded-full hover:scale-105 transition-transform duration-200"
+                    >
+                      Submit Review
+                    </Button>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+            </div>
             ))
           ) : (
             <p className="text-gray-500 mt-4">No locations match your filters.</p>
