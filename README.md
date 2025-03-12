@@ -1,4 +1,4 @@
-# StudyScape
+# [StudyScape](https://study-scape.netlify.app/)
 
 <img width="1680" alt="Screenshot 2025-03-11 at 10 33 47 PM" src="https://github.com/user-attachments/assets/412bb936-56fe-49d1-96c7-528df1b3434b" />
 
