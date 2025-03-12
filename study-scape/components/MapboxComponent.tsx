@@ -36,6 +36,7 @@ const MapboxComponent: React.FC = () => {
   const [isAddingLocation, setIsAddingLocation] = useState(false);
   const [formData, setFormData] = useState<Partial<Location> | null>(null);
   const supabase = createClient();
+  const tempMarkerRef = useRef<mapboxgl.Marker | null>(null);
 
   useEffect(() => {
     if (!mapContainerRef.current) return;
@@ -85,10 +86,11 @@ const MapboxComponent: React.FC = () => {
 
       const { lng, lat } = event.lngLat;
 
-      const tempMarker: mapboxgl.Marker = new mapboxgl.Marker()
-        .setLngLat([lng, lat])
-        .addTo(map);
-    
+      tempMarkerRef.current = new mapboxgl.Marker()
+      .setLngLat([lng, lat])
+      .addTo(mapRef.current!);
+
+
       setFormData({
         longitude: lng,
         latitude: lat,
@@ -112,6 +114,15 @@ const MapboxComponent: React.FC = () => {
       map.off("click", handleMapClick);
     };
   }, [isAddingLocation]);
+
+  const handleCloseForm = () => {
+    setFormData(null); // Close the form
+    if (tempMarkerRef.current) {
+      console.log("Removing temporary marker:", tempMarkerRef.current);
+      tempMarkerRef.current.remove();
+      tempMarkerRef.current = null;
+    }
+  };
 
   const handleFormSubmit = async () => {
     if (!formData?.name) {
@@ -208,7 +219,7 @@ const MapboxComponent: React.FC = () => {
         }}>
           {/* Close button */}
           <button 
-            onClick={() => setFormData(null)} 
+            onClick={handleCloseForm} 
             style={{
               position: "absolute",
               top: "5px",
