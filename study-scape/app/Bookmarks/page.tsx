@@ -3,6 +3,29 @@ import { createClient } from '@/utils/supabase/server';
 export default async function Page() {
   const supabase = await createClient();
 
+  interface Location {
+    name: string;
+    address: string;
+    hasRestrooms?: boolean;
+    hasFood?: boolean;
+    avgRating?: number;
+    soundLevel?: string;
+    hasWifi?: boolean;
+    hasPrinters?: boolean;
+    hasElevator?: boolean;
+    quietSpaces?: boolean;
+    hasBikeRack?: boolean;
+    uuid: string;
+  }
+  
+  interface Bookmark {
+    id: number;
+    location_id: string;
+    is_bookmarked: boolean;
+    user_id: string;
+    locations: Location;
+  }
+
   // Get the currently authenticated user
   const { data: { user }, error: authError } = await supabase.auth.getUser();
   if (authError || !user) {
@@ -28,7 +51,7 @@ export default async function Page() {
     .from('bookmarks')
     .select('id, location_id, is_bookmarked, locations (*)')
     .eq('user_id', userId)
-    .eq('is_bookmarked', true);
+    .eq('is_bookmarked', true) as { data: Bookmark[] | null, error: any };
 
     if (bookmarksError) {
       console.error('Error fetching bookmarks:', bookmarksError);
