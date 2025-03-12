@@ -33,13 +33,23 @@ To run the system:
    2. run "npm run dev"
    2. Open browser to http://localhost:3000 to see the website!
 
-## First version release!
-As of the latest commits, the exact use cases outlined in our project requirements from earlier are not operational. However, a more basic form of these use cases are operational as follows:
-   1. User wants to visually see the locations available and pan around the map for further options.
-   2. User wants to see the full list of study locations available (no filters applied)
-   3. User wants to access "favorited" spots via the "bookmarks" link at the top-right of the page.
+## Third version release!
+   See the [site](https://study-scape.netlify.app/)!
+   
+   1. Users can now Add Locations!
+   2. See location images!
+   4. Implemented user auth and profiles with bios!
+   5. Added location reviews, ratings, and bookmarks!
 
 ## Second version release!
    1. Revamped UI!
    2. Search and filter of locations list
    3. Live site! https://study-scape.netlify.app/
+
+## First version release!
+   Use cases that are operational are as follows:
+   1. User wants to visually see the locations available and pan around the map for further options.
+   2. User wants to see the full list of study locations available (no filters applied)
+   3. User wants to access "favorited" spots via the "bookmarks" link at the top-right of the page.
+
+
