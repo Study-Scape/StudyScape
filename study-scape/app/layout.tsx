@@ -35,13 +35,13 @@ export default function RootLayout({
               <Link href="/" className="bg-slate-200 text-indigo-800 px-4 py-1 rounded-full font-medium shadow-sm hover:text-purple-500 hover:bg-indigo-200 duration-500">
                 Home
               </Link>
-              <Link href="/About" className="bg-slate-200 text-indigo-800 px-4 py-1 rounded-full font-medium shadow-sm hover:text-purple-500 hover:bg-indigo-200 duration-500">
+              <Link href="/about" className="bg-slate-200 text-indigo-800 px-4 py-1 rounded-full font-medium shadow-sm hover:text-purple-500 hover:bg-indigo-200 duration-500">
                 About
               </Link>
-              <Link href="/Bookmarks" className="bg-slate-200 text-indigo-800 px-4 py-1 rounded-full font-medium shadow-sm hover:text-purple-500 hover:bg-indigo-200 duration-500">
+              <Link href="/bookmarks" className="bg-slate-200 text-indigo-800 px-4 py-1 rounded-full font-medium shadow-sm hover:text-purple-500 hover:bg-indigo-200 duration-500">
                 Bookmarks
               </Link>
-              <Link href="/Profile" className="bg-slate-200 text-indigo-800 px-4 py-1 rounded-full font-medium shadow-sm hover:text-purple-500 hover:bg-indigo-200 duration-500">
+              <Link href="/profile" className="bg-slate-200 text-indigo-800 px-4 py-1 rounded-full font-medium shadow-sm hover:text-purple-500 hover:bg-indigo-200 duration-500">
                 Profile
               </Link>
             </div>
