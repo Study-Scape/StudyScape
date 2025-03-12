@@ -24,7 +24,6 @@ interface Location {
   hasBikeRack: boolean;
   soundLevel: number;
   hasPicture: string;
-  address: string;
 }
 
 const MapboxComponent: React.FC = () => {
@@ -130,11 +129,6 @@ const MapboxComponent: React.FC = () => {
         return;
     }
 
-    if (!formData?.address) {
-        alert("Please enter an address.");
-        return;
-    }
-
     // Get the currently authenticated user
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     if (authError || !user) {
@@ -159,7 +153,6 @@ const MapboxComponent: React.FC = () => {
     const newLocation: Location = {
       uuid: crypto.randomUUID(),
       name: formData.name,
-      address: formData.address || "", 
       longitude: parseFloat(formData.longitude!.toFixed(6)),
       latitude: parseFloat(formData.latitude!.toFixed(6)),
       hasRestrooms: formData.hasRestrooms ?? false,
@@ -243,13 +236,6 @@ const MapboxComponent: React.FC = () => {
             placeholder="Location Name"
             value={formData.name || ""}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          />
-
-          <input
-            type="text"
-            placeholder="Address"
-            value={formData.address || ""}
-            onChange={(e) => setFormData({ ...formData, address: e.target.value })}
           />
 
           {[
