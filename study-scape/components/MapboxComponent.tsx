@@ -28,6 +28,7 @@ interface Location {
 }
 
 const MapboxComponent: React.FC = () => {
+  const [clickPosition, setClickPosition] = useState<{ x: number; y: number } | null>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
   const [mapLoaded, setMapLoaded] = useState(false);
@@ -35,6 +36,7 @@ const MapboxComponent: React.FC = () => {
   const [isAddingLocation, setIsAddingLocation] = useState(false);
   const [formData, setFormData] = useState<Partial<Location> | null>(null);
   const supabase = createClient();
+  const tempMarkerRef = useRef<mapboxgl.Marker | null>(null);
 
   useEffect(() => {
     if (!mapContainerRef.current) return;
@@ -79,10 +81,16 @@ const MapboxComponent: React.FC = () => {
     if (!mapRef.current) return;
     const map = mapRef.current;
 
-    const handleMapClick = (event: mapboxgl.MapMouseEvent) => {
+    const handleMapClick = (event: mapboxgl.MapMouseEvent & { originalEvent: MouseEvent }) => {
       if (!isAddingLocation) return;
 
       const { lng, lat } = event.lngLat;
+
+      tempMarkerRef.current = new mapboxgl.Marker()
+      .setLngLat([lng, lat])
+      .addTo(mapRef.current!);
+
+
       setFormData({
         longitude: lng,
         latitude: lat,
@@ -96,6 +104,7 @@ const MapboxComponent: React.FC = () => {
         soundLevel: 1,
         hasPicture: "",
       });
+      setClickPosition({ x: event.originalEvent.clientX, y: event.originalEvent.clientY });
       setIsAddingLocation(false);
     };
 
@@ -105,6 +114,15 @@ const MapboxComponent: React.FC = () => {
       map.off("click", handleMapClick);
     };
   }, [isAddingLocation]);
+
+  const handleCloseForm = () => {
+    setFormData(null); // Close the form
+    if (tempMarkerRef.current) {
+      console.log("Removing temporary marker:", tempMarkerRef.current);
+      tempMarkerRef.current.remove();
+      tempMarkerRef.current = null;
+    }
+  };
 
   const handleFormSubmit = async () => {
     if (!formData?.name) {
@@ -187,9 +205,38 @@ const MapboxComponent: React.FC = () => {
 
       <AddLocationButton isAdding={isAddingLocation} toggleAddingMode={() => setIsAddingLocation((prev) => !prev)} />
 
-      {formData && (
-        <div className="popup-form">
-          <h3 style={{ fontSize: "1.5em", fontWeight: "bold" }}>Add Location</h3>
+      {formData && clickPosition && (
+        <div className="popup-form" style={{
+          left: clickPosition.x,
+          top: clickPosition.y - 70,
+          position: "absolute",
+          background: "white",
+          padding: "15px",
+          borderRadius: "8px",
+          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+          border: "1px solid #ccc",
+          minWidth: "250px"
+        }}>
+          {/* Close button */}
+          <button 
+            onClick={handleCloseForm} 
+            style={{
+              position: "absolute",
+              top: "5px",
+              right: "5px",
+              border: "none",
+              background: "transparent",
+              fontSize: "1.2em",
+              fontWeight: "bold",
+              cursor: "pointer",
+              color: "#333", // Ensures visibility
+              padding: "5px",
+            }}
+          >
+            ✖
+          </button>
+
+          <h3 style={{ fontSize: "1.5em", fontWeight: "bold", marginTop: "10px" }}>Add Location</h3>
           
           <input
             type="text"
@@ -230,6 +277,8 @@ const MapboxComponent: React.FC = () => {
           <button onClick={handleFormSubmit}>Save</button>
         </div>
       )}
+
+
     </div>
   );
 };
