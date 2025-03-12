@@ -5,12 +5,10 @@ import { FaStar } from "react-icons/fa";
 const supabase = createClient();
 
 const StarRating = ({ locationUuid }: { locationUuid: string }) => {
-    console.log("hi")
     const [rating, setRating] = useState<number | null>(null);
     const [hover, setHover] = useState<number | null>(null);
 
     const submitRating = async (newRating: number) => {
-        console.log("New rating set:", newRating);
         setRating(newRating);
   
       // Get the currently authenticated user
