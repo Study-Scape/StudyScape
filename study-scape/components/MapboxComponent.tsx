@@ -83,7 +83,10 @@ const MapboxComponent: React.FC = () => {
     const handleMapClick = (event: mapboxgl.MapMouseEvent & { originalEvent: MouseEvent }) => {
       if (!isAddingLocation) return;
 
+
       const { lng, lat } = event.lngLat;
+
+      handleCloseForm()
 
       tempMarkerRef.current = new mapboxgl.Marker()
       .setLngLat([lng, lat])
