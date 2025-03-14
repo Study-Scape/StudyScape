@@ -222,7 +222,7 @@ export default function AllLocations({ serverLocations }: {serverLocations: any}
                 <Button
                   key={filter}
                   className={`px-3 py-1 rounded-md text-xs ${
-                    filters.study[filter as keyof StudyFilters] ? "bg-gray-500 text-white" : "bg-indigo-500 text-white"
+                    filters.study[filter as keyof StudyFilters] ? "bg-indigo-500 text-white" : "bg-gray-500 text-white"
                   }`}
                   onClick={() => toggleFilter('study', filter as keyof StudyFilters)}
                 >
@@ -237,7 +237,7 @@ export default function AllLocations({ serverLocations }: {serverLocations: any}
                 <Button
                   key={filter}
                   className={`px-3 py-1 rounded-md text-xs ${
-                    filters.accessibility[filter as keyof AccessibilityFilters] ? "bg-gray-500 text-white" : "bg-indigo-500 text-white"
+                    filters.accessibility[filter as keyof AccessibilityFilters] ? "bg-indigo-500 text-white" : "bg-gray-500 text-white"
                   }`}
                   onClick={() => toggleFilter('accessibility', filter as keyof AccessibilityFilters)}
                 >
