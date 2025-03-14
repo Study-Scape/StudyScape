@@ -36,9 +36,9 @@ export default async function ProfilePage() {
       userData.username = '@' + profile.username;
       userData.bio = profile.bio || '(add a bio!)';
       userData.favoriteSpots = profile.favorite_spots || ["favorite", "some", "spots!"];
-      userData.noisePreference = profile.noise_preference || '(choose a noise preference!)';
-      userData.reviewCount = profile.review_count || '(write a review!)';
-      userData.avgRating = profile.avg_rating || '(rate a study spot!)';
+      userData.noisePreference = profile.noise_preference || '';
+      userData.reviewCount = profile.review_count || '--';
+      userData.avgRating = profile.avg_rating || '-/5';
     }
   }
   
@@ -70,9 +70,22 @@ export default async function ProfilePage() {
     
     <div className="px-8 py-6">
     <h2 className="text-2xl font-bold text-gray-800 mb-4">Study Preferences</h2>
-    <p className="text-lg text-gray-600">
+    <p className="text-lg text-gray-600 mb-4">
     Preferred Noise Level: <span className="font-semibold">{userData.noisePreference}</span>
     </p>
+    
+    {/* Noise preference buttons */}
+    <div className="flex flex-wrap gap-2 mt-2">
+      <span className="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm cursor-pointer hover:bg-green-200">
+        Quiet
+      </span>
+      <span className="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm cursor-pointer hover:bg-yellow-200">
+        Chatter
+      </span>
+      <span className="px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm cursor-pointer hover:bg-red-200">
+        Loud
+      </span>
+    </div>
     </div>
     
     <div className="px-8 py-6 bg-gray-50">
