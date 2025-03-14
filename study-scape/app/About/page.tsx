@@ -1,13 +1,41 @@
 "use client";
 import { motion } from "framer-motion";
-import Brandon from "/Brandon.jpg";
-import Julie from "/Julie.jpeg";
-import Carl from "/Carl.jpg";
-import Michael from "/Michael.jpeg";
-import Sanjana from "/Sanjana.jpg";
-import Dawn from "/Dawn.jpeg";
+import Image from "next/image";
 
 export default function AboutPage() {
+  const teamMembers = [
+    {
+      name: "Brandon",
+      image: "/Brandon.jpg",
+      bio: "I'm a second year computer science student here at UW and I helped implement the map and markers for Study Scape!"
+    },
+    {
+      name: "Julie",
+      image: "/Julie.jpeg",
+      bio: "I'm a senior in computer science at UW. I love watching shows and reading romcoms in my free time. My usual study spot was truly my dorm desk at Maple Hall."
+    },
+    {
+      name: "Michael",
+      image: "/Michael.jpeg",
+      bio: "I'm a 2nd year CS student at UW and I helped implement the map, markers, and navigation for StudyScape!"
+    },
+    {
+      name: "Carl",
+      image: "/Carl.jpg",
+      bio: "I'm a junior in CS, and a NewJeans and The Bear enjoyer."
+    },
+    {
+      name: "Dawn",
+      image: "/Dawn.jpeg",
+      bio: "Fifth-year in CS here (left)! Worked on the behind-the-scenes of StudyScape and I leave merge conflicts whereever I go."
+    },
+    {
+      name: "Sanjana",
+      image: "/Sanjana.jpg",
+      bio: "I'm a third year computer science student and I worked on the frontend development of StudyScape, ensuring a seamless user experience."
+    }
+  ];
+
   return (
     <div className="p-8 bg-gradient-to-r from-indigo-50 to-purple-100">
       {/* Title */}
@@ -29,61 +57,27 @@ export default function AboutPage() {
       > Meet the people behind StudyScape!🚀
       </motion.p>
 
-      {/* Intro to the Team */}
+      {/* Team Members Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-        <motion.div 
-          className="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center justify-center"
-          whileHover={{ scale: 1.05 }}
-        >
-          <img src={Brandon.src} alt="Brandon" className="w-40 h-50" />
-          <h2 className="text-2xl font-semibold text-gray-800 mt-2">Brandon</h2>
-          <p className="text-gray-600">I'm a second year computer science student here at UW and I helped implement the map and markers for Study Scape!</p>
-        </motion.div>
-
-        <motion.div 
-          className="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center justify-center"
-          whileHover={{ scale: 1.05 }}
-        >
-          <img src={Julie.src} alt="Julie" className="w-40 h-50" />
-          <h2 className="text-2xl font-semibold text-gray-800 mt-2">Julie</h2>
-          <p className="text-gray-600">I’m a senior in computer science at UW. I love watching shows and reading romcoms in my free time. My usual study spot was truly my dorm desk at Maple Hall.</p>
-        </motion.div>
-
-        <motion.div 
-          className="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center justify-center"
-          whileHover={{ scale: 1.05 }}
-        >
-          <img src={Michael.src} alt="Michael" className="w-40 h-50" />
-          <h2 className="text-2xl font-semibold text-gray-800 mt-2">Michael</h2>
-          <p className="text-gray-600">I'm a 2nd year CS student at UW and I helped implement the map, markers, and navigation for StudyScape!</p>
-        </motion.div>
-
-        <motion.div 
-          className="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center justify-center"
-          whileHover={{ scale: 1.05 }}
-        >
-          <img src={Carl.src} alt="Carl" className="w-40 h-50" />
-          <h2 className="text-2xl font-semibold text-gray-800 mt-2">Carl</h2>
-          <p className="text-gray-600">I'm a junior in CS, and a NewJeans and The Bear enjoyer.</p>
-        </motion.div>
-
-        <motion.div 
-          className="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center justify-center"
-          whileHover={{ scale: 1.05 }}
-        >
-          <img src={Dawn.src} alt="Dawn" className="w-30 h-60" />
-          <h2 className="text-2xl font-semibold text-gray-800 mt-2">Dawn</h2>
-          <p className="text-gray-600">Fifth-year in CS here (left)! Worked on the behind-the-scenes of StudyScape and I leave merge conflicts whereever I go.</p>
-        </motion.div>
-
-        <motion.div 
-          className="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center justify-center"
-          whileHover={{ scale: 1.05 }}
-        >
-          <img src={Sanjana.src} alt="Sanjana" className="w-40 h-50" />
-          <h2 className="text-2xl font-semibold text-gray-800 mt-2">Sanjana</h2>
-          <p className="text-gray-600">I'm a third year computer science student and I worked on the frontend development of StudyScape, ensuring a seamless user experience.</p>
-        </motion.div>
+        {teamMembers.map((member, index) => (
+          <motion.div 
+            key={index}
+            className="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center justify-center"
+            whileHover={{ scale: 1.05 }}
+          >
+            <div className="relative w-40 h-48">
+              <Image 
+                src={member.image} 
+                alt={`${member.name}'s photo`} 
+                fill
+                style={{ objectFit: "cover" }}
+                className="rounded-md"
+              />
+            </div>
+            <h2 className="text-2xl font-semibold text-gray-800 mt-2">{member.name}</h2>
+            <p className="text-gray-600">{member.bio}</p>
+          </motion.div>
+        ))}
       </div>
 
       {/* Call to Action */}
