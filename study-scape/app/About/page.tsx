@@ -1,10 +1,15 @@
 "use client";
 import { motion } from "framer-motion";
-import { MapPin, Star, BookOpen } from "lucide-react";
+import Brandon from "/Users/dawnmai/cs-projects/StudyScape/Brandon.jpg";
+import Julie from "/Users/dawnmai/cs-projects/StudyScape/Julie.jpeg";
+import Carl from "/Users/dawnmai/cs-projects/StudyScape/Carl.jpg";
+import Michael from "/Users/dawnmai/cs-projects/StudyScape/Michael.jpeg";
+import Sanjana from "/Users/dawnmai/cs-projects/StudyScape/Sanjana.jpg";
+import Dawn from "/Users/dawnmai/cs-projects/StudyScape/Dawn.jpeg";
 
 export default function AboutPage() {
   return (
-    <div className="p-8 bg-gradient-to-r from-indigo-50 to-purple-100 min-h-screen">
+    <div className="p-8 bg-gradient-to-r from-indigo-50 to-purple-100">
       {/* Title */}
       <motion.h1 
         className="text-4xl font-extrabold text-purple-800 text-center mb-6"
@@ -21,49 +26,63 @@ export default function AboutPage() {
         initial={{ opacity: 0 }} 
         animate={{ opacity: 1 }} 
         transition={{ duration: 1 }}
-      >
-        Ever wandered around UW looking for the perfect study spot? StudyScape helps you find, review, and explore the best locations based on noise level, outlets, food options, and more!🚀
+      > Meet the people behind StudyScape!🚀
       </motion.p>
 
-      {/* Fun Statistics Section */}
+      {/* Intro to the Team */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
         <motion.div 
-          className="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center"
+          className="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center justify-center"
           whileHover={{ scale: 1.05 }}
         >
-          <MapPin className="text-purple-600" size={40} />
-          <h2 className="text-2xl font-semibold text-gray-800 mt-2">50+</h2>
-          <p className="text-gray-600">Study Spots Mapped</p>
+          <img src={Brandon.src} alt="Brandon" className="w-40 h-50" />
+          <h2 className="text-2xl font-semibold text-gray-800 mt-2">Brandon</h2>
+          <p className="text-gray-600">I'm a second year computer science student here at UW and I helped implement the map and markers for Study Scape!</p>
         </motion.div>
 
         <motion.div 
-          className="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center"
+          className="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center justify-center"
           whileHover={{ scale: 1.05 }}
         >
-          <Star className="text-yellow-500" size={40} />
-          <h2 className="text-2xl font-semibold text-gray-800 mt-2">4.8/5</h2>
-          <p className="text-gray-600">Average Rating</p>
+          <img src={Julie.src} alt="Julie" className="w-40 h-50" />
+          <h2 className="text-2xl font-semibold text-gray-800 mt-2">Julie</h2>
+          <p className="text-gray-600">I’m a senior in computer science at UW. I love watching shows and reading romcoms in my free time. My usual study spot was truly my dorm desk at Maple Hall.</p>
         </motion.div>
 
         <motion.div 
-          className="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center"
+          className="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center justify-center"
           whileHover={{ scale: 1.05 }}
         >
-          <BookOpen className="text-blue-600" size={40} />
-          <h2 className="text-2xl font-semibold text-gray-800 mt-2">500+</h2>
-          <p className="text-gray-600">Students Helped</p>
+          <img src={Michael.src} alt="Michael" className="w-40 h-50" />
+          <h2 className="text-2xl font-semibold text-gray-800 mt-2">Michael</h2>
+          <p className="text-gray-600">I'm a 2nd year CS student at UW and I helped implement the map, markers, and navigation for StudyScape!</p>
         </motion.div>
-      </div>
 
-      {/* Student Reviews (Fun Quotes Section) */}
-      <div className="bg-purple-50 p-6 rounded-xl mt-8">
-        <h2 className="text-xl font-bold text-purple-800 text-center mb-4">What UW Students Say:</h2>
         <motion.div 
-          className="italic text-gray-700 text-center"
-          animate={{ opacity: [0, 1], x: [-20, 0] }}
-          transition={{ duration: 1 }}
+          className="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center justify-center"
+          whileHover={{ scale: 1.05 }}
         >
-          <p>“I found my go-to study spot thanks to StudyScape! No more guessing where to go.” – Student Name, CSE</p>
+          <img src={Carl.src} alt="Carl" className="w-40 h-50" />
+          <h2 className="text-2xl font-semibold text-gray-800 mt-2">Carl</h2>
+          <p className="text-gray-600">I'm a junior in CS, and a NewJeans and The Bear enjoyer.</p>
+        </motion.div>
+
+        <motion.div 
+          className="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center justify-center"
+          whileHover={{ scale: 1.05 }}
+        >
+          <img src={Dawn.src} alt="Dawn" className="w-30 h-60" />
+          <h2 className="text-2xl font-semibold text-gray-800 mt-2">Dawn</h2>
+          <p className="text-gray-600">Fifth-year in CS here (left)! Worked on the behind-the-scenes of StudyScape and I leave merge conflicts whereever I go.</p>
+        </motion.div>
+
+        <motion.div 
+          className="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center justify-center"
+          whileHover={{ scale: 1.05 }}
+        >
+          <img src={Sanjana.src} alt="Sanjana" className="w-40 h-50" />
+          <h2 className="text-2xl font-semibold text-gray-800 mt-2">Sanjana</h2>
+          <p className="text-gray-600">I'm a third year computer science student and I worked on the frontend development of StudyScape, ensuring a seamless user experience.</p>
         </motion.div>
       </div>
 
