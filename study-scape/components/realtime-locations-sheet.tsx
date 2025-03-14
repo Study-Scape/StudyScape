@@ -70,15 +70,35 @@ export default function AllLocations({ serverLocations }: {serverLocations: any}
 
     /* { Real Time Reviews } */
     useEffect(() => {
-      // Check if reviews are stored in localStorage and load them
-      const storedReviews = localStorage.getItem('reviews');
-      if (storedReviews) {
-        setReviews(JSON.parse(storedReviews));
-      }
-  
+      // Fetch reviews from Supabase on page load
+      const fetchReviews = async () => {
+        const { data, error } = await supabase
+          .from('reviews')
+          .select('*'); // Fetch all reviews
+
+        if (error) {
+          console.error('Error fetching reviews:', error);
+        } else {
+          // Update state with fetched reviews
+          const reviewsByLocation = data.reduce((acc: any, review: any) => {
+            const { location_id } = review;
+            if (!acc[location_id]) {
+              acc[location_id] = [];
+            }
+            acc[location_id].push(review);
+            return acc;
+          }, {});
+          setReviews(reviewsByLocation);
+        }
+      };
+
+      // Initial fetch
+      fetchReviews();
+
       // Real-time updates for reviews
       const channel = supabase
         .channel('realtime reviews')
+        // Handle INSERT event for new reviews
         .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'reviews' },
           (payload) => {
             setReviews((prev: any) => {
@@ -86,20 +106,33 @@ export default function AllLocations({ serverLocations }: {serverLocations: any}
                 ...prev,
                 [payload.new.location_id]: [...(prev[payload.new.location_id] || []), payload.new]
               };
-              localStorage.setItem('reviews', JSON.stringify(updatedReviews)); // Save to localStorage
+              return updatedReviews;
+            });
+          }
+        )
+        // Handle DELETE event for deleted reviews
+        .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'reviews' },
+          (payload) => {
+            setReviews((prev: any) => {
+              const updatedReviews = { ...prev };
+              // Remove the deleted review from state
+              Object.keys(updatedReviews).forEach(locationId => {
+                updatedReviews[locationId] = updatedReviews[locationId].filter(
+                  (review: any) => review.id !== payload.old.id
+                );
+              });
               return updatedReviews;
             });
           }
         )
         .subscribe();
-  
+
       return () => {
         supabase.removeChannel(channel);
       };
     }, [supabase]);
 
     const handleReviewSubmit = async (locationId: number) => {
-
       const { error } = await supabase
         .from('reviews')
         .insert([{ 
@@ -108,30 +141,31 @@ export default function AllLocations({ serverLocations }: {serverLocations: any}
           location_id: locationId 
         }]);
 
-        if (!error) {
-            setNewReview(''); // Clear the input field without adding duplicates
-        }
+      if (!error) {
+        setNewReview(''); // Clear the input field without adding duplicates
+      }
     };
 
-  const handleReviewDelete = async (reviewId: number) => {
-    const { error } = await supabase
-      .from('reviews')
-      .delete()
-      .eq('id', reviewId);
+    const handleReviewDelete = async (reviewId: number) => {
+      // Delete review from Supabase
+      const { error } = await supabase
+        .from('reviews')
+        .delete()
+        .eq('id', reviewId);
 
-    if (!error) {
-      setReviews((prev: any) => {
-        const updatedReviews = { ...prev };
-        Object.keys(updatedReviews).forEach(locationId => {
-          updatedReviews[locationId] = updatedReviews[locationId].filter(
-            (review: any) => review.id !== reviewId
-          );
+      if (!error) {
+        setReviews((prev: any) => {
+          const updatedReviews = { ...prev };
+          Object.keys(updatedReviews).forEach(locationId => {
+            updatedReviews[locationId] = updatedReviews[locationId].filter(
+              (review: any) => review.id !== reviewId
+            );
+          });
+
+          return updatedReviews;
         });
-        return updatedReviews;
-      });
-    }
-  };
-
+      }
+    };
 
     // Function to toggle filters
     const toggleFilter = <T extends keyof StudyFilters | keyof AccessibilityFilters>(
