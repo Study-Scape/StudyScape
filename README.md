@@ -15,15 +15,29 @@ Overall, this project seeks to empower university students to make informed deci
 about where to study based on their preferences and needs.
 
 ## Users and Developers guide
-We now have guides in one location! Access the documentation [here](https://docs.google.com/document/d/1rZ31D1uOTsLFKJloVl5T59feAOC0EVws56s-OQ7Rgx0/edit?usp=sharing).
+Access the [user guide](https://docs.google.com/document/d/1rZ31D1uOTsLFKJloVl5T59feAOC0EVws56s-OQ7Rgx0/edit?tab=t.0#heading=h.qq7qwb4b2e8b)! \
+Access the [dev guide](https://docs.google.com/document/d/1rZ31D1uOTsLFKJloVl5T59feAOC0EVws56s-OQ7Rgx0/edit?tab=t.5rhlcu99jdui#heading=h.mtg3yqrlb0sf)!
+
+## Main Capabilities
+- Visual Map
+- Locations List
+- Study and Accessibility Filtering 
+- Ratings and Realtime Reviews
+- Bookmarks
+- Add Location
+- Navigate to Spots
+- Profiles
 
 ## Third version release! [v.3](https://github.com/Study-Scape/StudyScape/releases/tag/v3.0)
    See the [site](https://study-scape.netlify.app/)!
    
-   1. Users can now Add Locations!
+   1. Users can now add locations!
    2. See location images!
-   4. Implemented user auth and profiles with bios!
-   5. Added location reviews, ratings, and bookmarks!
+   3. Now navigate to study spots!
+   4. New profiles with bios!
+   5. Revamped bookmarks page!
+   6. Implemented user auth
+   7. Added location realtime reviews and ratings
 
 ## Second version release!
    1. Revamped UI!
