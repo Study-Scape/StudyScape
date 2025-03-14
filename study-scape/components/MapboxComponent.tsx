@@ -196,6 +196,7 @@ const MapboxComponent: React.FC = () => {
             coordinates={[location.longitude, location.latitude]}
             popupText={location.name}
             imageUrl={location.hasPicture}
+            locationId={location.uuid}
           />
         ))}
 
