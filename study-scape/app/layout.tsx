@@ -46,7 +46,7 @@ export default function RootLayout({
               </Link>
             </div>
           </nav>
-        <main className="absolute top-16 left-0 w-full bottom-0">{children} </main>
+        <main className="absolute top-16 left-0 w-full bottom-0 overflow-y-auto no-scrollbar">{children} </main>
       </body>
     </html>
   );
