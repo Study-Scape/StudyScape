@@ -1,11 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
-import Brandon from "/Users/dawnmai/cs-projects/StudyScape/Brandon.jpg";
-import Julie from "/Users/dawnmai/cs-projects/StudyScape/Julie.jpeg";
-import Carl from "/Users/dawnmai/cs-projects/StudyScape/Carl.jpg";
-import Michael from "/Users/dawnmai/cs-projects/StudyScape/Michael.jpeg";
-import Sanjana from "/Users/dawnmai/cs-projects/StudyScape/Sanjana.jpg";
-import Dawn from "/Users/dawnmai/cs-projects/StudyScape/Dawn.jpeg";
+import Brandon from "/Users/dawnmai/cs-projects/StudyScape/study-scape/pictures/Brandon.jpg";
+import Julie from "/Users/dawnmai/cs-projects/StudyScape/study-scape/pictures/Julie.jpeg";
+import Carl from "/Users/dawnmai/cs-projects/StudyScape/study-scape/pictures/Carl.jpg";
+import Michael from "/Users/dawnmai/cs-projects/StudyScape/study-scape/pictures/Michael.jpeg";
+import Sanjana from "/Users/dawnmai/cs-projects/StudyScape/study-scape/pictures/Sanjana.jpg";
+import Dawn from "/Users/dawnmai/cs-projects/StudyScape/study-scape/pictures/Dawn.jpeg";
 
 export default function AboutPage() {
   return (
